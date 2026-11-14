@@ -6,7 +6,7 @@ public abstract class CombatEnemyBase : EnemyBase
     [SerializeField] protected int damage = 10;
 
     [Tooltip("Урон герою в сердцах (1 = целое сердце, 0.5 = половинка)")]
-    [SerializeField] protected float damageToPlayer = 1f;
+    [SerializeField] protected float damageToPlayer = 0.5f;
 
     protected EnemyStateMachine stateMachine;
 

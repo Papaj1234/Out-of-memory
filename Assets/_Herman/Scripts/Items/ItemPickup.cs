@@ -58,7 +58,19 @@ namespace Assets._Herman.Scripts.Items
             // защита от повторного срабатывания с нескольких коллайдеров героя
             isPickedUp = true;
 
+            PlayerHealth health = stats.GetComponent<PlayerHealth>();
+            float maxBefore = health != null ? health.MaxHealth : 0f;
+
             stats.AddItem(item);
+
+            // предмет добавил сердца — сразу заполняем их, как в Isaac
+            if (health != null)
+            {
+                float gained = health.MaxHealth - maxBefore;
+                if (gained > 0f)
+                    health.Heal(gained);
+            }
+
             Destroy(gameObject);
         }
     }

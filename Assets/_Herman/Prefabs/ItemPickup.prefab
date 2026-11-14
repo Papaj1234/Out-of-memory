@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7167245, g: 0.8037735, b: 0.25326446, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,3 +144,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemPickup
   item: {fileID: 0}
   iconRenderer: {fileID: 3126159809559922525}
+  fallbackIcon: {fileID: -2413806693520163455, guid: 2d57c728a4e86d14b9da9aa10f22c6cb, type: 3}

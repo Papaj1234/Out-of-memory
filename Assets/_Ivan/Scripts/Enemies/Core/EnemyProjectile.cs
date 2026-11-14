@@ -4,7 +4,7 @@ using Assets._Herman.Scripts.Rooms;
 public class EnemyProjectile : ProjectileBase
 {
     [Tooltip("Урон герою в сердцах")]
-    [SerializeField] private float damage = 1f;
+    [SerializeField] private float damage = 0.5f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

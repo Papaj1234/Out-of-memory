@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8e3842090838f459c8763296b61f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Rooms.Pedestal
-  itemSlot: {fileID: 0}
-  pickupPrefab: {fileID: 0}
+  itemSlot: {fileID: 1212725916302345545}
+  pickupPrefab: {fileID: 5842287968772610660, guid: 3c9c652c0c15cd84c895a69d39b1a583, type: 3}
   itemPool:
   - {fileID: 11400000, guid: b22c47399f218004596399f14e06eef8, type: 2}
   - {fileID: 11400000, guid: 408c530744684b94f8be205f8dccb87f, type: 2}
