@@ -11,7 +11,8 @@ namespace Assets._Herman.Scripts.Items
         AttackSpeed,
         Damage,
         ProjectileSpeed,
-        ProjectileRadius
+        ProjectileRadius,
+        MaxHealth
     }
 
     [Serializable]
