@@ -1,0 +1,61 @@
+﻿using UnityEngine;
+
+namespace Assets._Herman.Scripts.Items
+{
+    // Предмет на полу. Подбирается при касании героя (нужен PlayerStats на герое).
+    [RequireComponent(typeof(CircleCollider2D))]
+    public class ItemPickup : MonoBehaviour
+    {
+        [SerializeField] private ItemData item;
+        [Tooltip("Если задан — сюда автоматически ставится иконка предмета")]
+        [SerializeField] private SpriteRenderer iconRenderer;
+
+        public ItemData Item => item;
+
+        private bool isPickedUp;
+
+        private void Awake()
+        {
+            GetComponent<CircleCollider2D>().isTrigger = true;
+            RefreshIcon();
+        }
+
+        private void Reset()
+        {
+            GetComponent<CircleCollider2D>().isTrigger = true;
+            iconRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        // Для пьедестала: положить конкретный предмет
+        public void SetItem(ItemData newItem)
+        {
+            item = newItem;
+            RefreshIcon();
+        }
+
+        private void RefreshIcon()
+        {
+            if (iconRenderer != null && item != null && item.Icon != null)
+                iconRenderer.sprite = item.Icon;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) => TryPickUp(other);
+        private void OnTriggerStay2D(Collider2D other) => TryPickUp(other);
+
+        private void TryPickUp(Collider2D other)
+        {
+            if (isPickedUp || item == null)
+                return;
+
+            PlayerStats stats = other.GetComponentInParent<PlayerStats>();
+            if (stats == null)
+                return;
+
+            // защита от повторного срабатывания с нескольких коллайдеров героя
+            isPickedUp = true;
+
+            stats.AddItem(item);
+            Destroy(gameObject);
+        }
+    }
+}
