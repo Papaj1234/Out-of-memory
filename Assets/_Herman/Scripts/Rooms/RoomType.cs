@@ -39,11 +39,15 @@ namespace Assets._Herman.Scripts.Rooms
         public Vector2Int centerClearance = new Vector2Int(1, 1);
 
         [Header("Doors")]
-        [Tooltip("Двери открыты сразу (стартовая комната). Иначе — откроются после зачистки")]
-        public bool doorsStartOpen = false;
-
         [Tooltip("Своя дверь для этого типа (например, у босса). Пусто = обычная")]
         public Door doorPrefabOverride;
+
+        [Header("Enemies")]
+        [Tooltip("Какие мобы могут появиться (берутся случайно)")]
+        public List<GameObject> enemyPrefabs = new List<GameObject>();
+
+        [Tooltip("x = минимум, y = максимум мобов. 0/0 = комната без мобов")]
+        public Vector2Int enemyCount = new Vector2Int(2, 4);
 
         [Header("Features")]
         public List<RoomFeature> features = new List<RoomFeature>();

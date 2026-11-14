@@ -9,6 +9,8 @@ namespace Assets._Herman.Scripts.Items
         [SerializeField] private ItemData item;
         [Tooltip("Если задан — сюда автоматически ставится иконка предмета")]
         [SerializeField] private SpriteRenderer iconRenderer;
+        [Tooltip("Показывается, если у предмета нет иконки")]
+        [SerializeField] private Sprite fallbackIcon;
 
         public ItemData Item => item;
 
@@ -35,8 +37,10 @@ namespace Assets._Herman.Scripts.Items
 
         private void RefreshIcon()
         {
-            if (iconRenderer != null && item != null && item.Icon != null)
-                iconRenderer.sprite = item.Icon;
+            if (iconRenderer == null) return;
+
+            Sprite icon = item != null ? item.Icon : null;
+            iconRenderer.sprite = icon != null ? icon : fallbackIcon;
         }
 
         private void OnTriggerEnter2D(Collider2D other) => TryPickUp(other);
