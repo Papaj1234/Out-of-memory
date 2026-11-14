@@ -1,5 +1,8 @@
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "RangedAttack")]
 public class RangedAttack : AttackBase
 {
     [SerializeField] private Projectile projectilePrefab;
@@ -15,6 +18,8 @@ public class RangedAttack : AttackBase
     // Выстрел происходит сразу.
     // Перезарядку проверяет AttackBase.
     protected override bool IsAttacking => false;
+
+    protected override bool CanExecute() => projectilePrefab != null;
 
     protected override void ExecuteAttack(Vector2 direction)
     {
@@ -55,3 +60,4 @@ public class RangedAttack : AttackBase
         // после замены типа атаки.
     }
 }
+

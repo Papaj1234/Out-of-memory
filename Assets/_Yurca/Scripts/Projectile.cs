@@ -1,7 +1,12 @@
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "Projectile")]
 public class Projectile : MonoBehaviour
 {
+    [SerializeField, Min(0.01f)] private float referenceVisualRadius = 0.15f;
+
     private Transform owner;
     private Vector2 direction;
 
@@ -36,6 +41,8 @@ public class Projectile : MonoBehaviour
 
         this.targetLayers = targetLayers;
         this.obstacleLayers = obstacleLayers;
+
+        transform.localScale *= this.radius / Mathf.Max(0.01f, referenceVisualRadius);
 
         initialized = true;
 
@@ -77,14 +84,14 @@ public class Projectile : MonoBehaviour
 
             // Пропускаем самого стрелявшего.
             if (owner != null &&
-                target.transform.IsChildOf(owner))
+                (target.transform == owner || target.transform.IsChildOf(owner)))
             {
                 continue;
             }
 
             // Пропускаем собственные коллайдеры,
             // если они были добавлены на префаб.
-            if (target.transform.IsChildOf(transform))
+            if (target.transform == transform || target.transform.IsChildOf(transform))
                 continue;
 
             int layerBit = 1 << target.gameObject.layer;

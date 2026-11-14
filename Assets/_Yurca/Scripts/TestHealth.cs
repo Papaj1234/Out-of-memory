@@ -1,5 +1,8 @@
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "TestHealth")]
 public class TestHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private float health = 30f;
@@ -17,3 +20,4 @@ public class TestHealth : MonoBehaviour, IDamageable
             Destroy(gameObject);
     }
 }
+

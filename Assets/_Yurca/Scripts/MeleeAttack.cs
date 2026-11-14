@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "MeleeAttack")]
 public class MeleeAttack : AttackBase
 {
     [SerializeField] private LayerMask targetLayers;
@@ -35,7 +38,7 @@ public class MeleeAttack : AttackBase
         float angle = Stats.AttackAngle;
         float damage = Stats.Damage * multiplier;
         float duration = Mathf.Max(0.01f, Stats.AttackDuration);
-        float delay = Mathf.Clamp(hitDelay, 0f, duration);
+        float delay = Mathf.Clamp(hitDelay / Stats.AttackSpeedMultiplier, 0f, duration);
 
         yield return new WaitForSeconds(delay);
 
@@ -91,38 +94,9 @@ public class MeleeAttack : AttackBase
         float damage
     )
     {
-        Vector2 origin = Origin.position;
-
-        Collider2D[] targets = Physics2D.OverlapCircleAll(
-            origin,
-            range,
-            targetLayers
-        );
-
-        HashSet<IDamageable> hitTargets = new();
-
-        foreach (Collider2D target in targets)
-        {
-            // Не наносим урон своему персонажу.
-            if (target.transform.IsChildOf(Stats.transform))
-                continue;
-
-            Vector2 offset =
-                (Vector2)target.bounds.center - origin;
-
-            if (offset.sqrMagnitude > 0.0001f &&
-                Vector2.Angle(direction, offset) > angle * 0.5f)
-            {
-                continue;
-            }
-
-            IDamageable damageable =
-                target.GetComponentInParent<IDamageable>();
-
-            // Одна цель получает урон один раз за удар.
-            if (damageable != null && hitTargets.Add(damageable))
-                damageable.TakeDamage(damage);
-        }
+        DamageUtility.DealArea(
+            Origin.position, range, direction, angle,
+            damage, targetLayers, Stats.transform);
     }
 
     public override void CancelAttack()
@@ -150,8 +124,9 @@ public class MeleeAttack : AttackBase
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
         CancelAttack();
     }
 }
+

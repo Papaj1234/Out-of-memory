@@ -1,5 +1,8 @@
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "TestContactDamage")]
 public class TestContactDamage : MonoBehaviour
 {
     [SerializeField, Min(0f)]
@@ -34,3 +37,4 @@ public class TestContactDamage : MonoBehaviour
             health.TakeDamage(damage);
     }
 }
+

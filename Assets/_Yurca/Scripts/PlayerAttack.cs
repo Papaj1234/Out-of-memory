@@ -2,122 +2,69 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-
-[RequireComponent(typeof(PlayerStats))]
+using UnityEngine.Scripting.APIUpdating;
+[RequireComponent(typeof(PlayerEquipment))]
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "PlayerAttack")]
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Camera aimCamera;
-    [SerializeField] private Transform attackOrigin;
-
-    public AttackBase CurrentAttack => currentAttack;
-
+    public AttackBase CurrentAttack => equipment == null ? null :
+        equipment.GetAction(EquipmentSlot.Attack) as AttackBase;
     public event Action<AttackBase> AttackChanged;
-
-    private PlayerStats stats;
-    private AttackBase currentAttack;
-
-    // Префаб предмета, соответствующего текущей атаке.
-    private AttackPickup currentItem;
+    private PlayerEquipment equipment;
+    private PlayerMovement movement;
 
     private void Awake()
     {
-        stats = GetComponent<PlayerStats>();
-
-        if (aimCamera == null)
-            aimCamera = Camera.main;
-
-        if (attackOrigin == null)
-            attackOrigin = transform;
+        equipment = GetComponent<PlayerEquipment>();
+        movement = GetComponent<PlayerMovement>();
+        if (aimCamera == null) aimCamera = Camera.main;
     }
+    private void OnEnable() { equipment.SlotChanged += OnSlotChanged; }
+    private void OnDisable() { equipment.SlotChanged -= OnSlotChanged; }
+    private void OnSlotChanged(EquipmentSlot slot, EquippedActionBase action)
+    {
+        if (slot == EquipmentSlot.Attack) AttackChanged?.Invoke(action as AttackBase);
+    }
+    public void SetAimCamera(Camera camera) { aimCamera = camera; }
 
     private void Update()
     {
+        Keyboard keys = Keyboard.current;
+        if (keys != null)
+        {
+            if (keys[Controls.SelectAbilitySlot1].wasPressedThisFrame) equipment.SelectAbilitySlot(0);
+            if (keys[Controls.SelectAbilitySlot2].wasPressedThisFrame) equipment.SelectAbilitySlot(1);
+        }
+        Vector2 aim = AimDirection();
         Mouse mouse = Mouse.current;
-
-        if (mouse == null || aimCamera == null || currentAttack == null)
-            return;
-
-        if (mouse[Controls.Attack] is not ButtonControl button ||
-            !button.wasPressedThisFrame)
+        if (mouse != null && mouse[Controls.Attack] is ButtonControl button &&
+            button.wasPressedThisFrame) equipment.TryUse(EquipmentSlot.Attack, aim);
+        if (keys == null) return;
+        if (keys[Controls.Dash].wasPressedThisFrame)
         {
-            return;
+            Vector2 direction = movement != null && movement.InputDirection.sqrMagnitude > 0.001f
+                ? movement.InputDirection : aim;
+            equipment.TryUse(EquipmentSlot.Dash, direction);
         }
-
-        Ray ray = aimCamera.ScreenPointToRay(
-            mouse.position.ReadValue()
-        );
-
-        Plane plane = new Plane(
-            Vector3.forward,
-            attackOrigin.position
-        );
-
-        if (!plane.Raycast(ray, out float distance))
-            return;
-
-        Vector2 cursorPosition = ray.GetPoint(distance);
-
-        Vector2 direction =
-            cursorPosition - (Vector2)attackOrigin.position;
-
-        currentAttack.TryAttack(direction);
+        if (keys[Controls.Ability1].wasPressedThisFrame) equipment.TryUse(EquipmentSlot.Ability1, aim);
+        if (keys[Controls.Ability2].wasPressedThisFrame) equipment.TryUse(EquipmentSlot.Ability2, aim);
+        if (keys[Controls.Ultimate].wasPressedThisFrame) equipment.TryUse(EquipmentSlot.Ultimate, aim);
     }
-
-    public bool TryEquipItem(AttackPickup pickup)
+    private Vector2 AimDirection()
     {
-        if (pickup == null || pickup.AttackPrefab == null)
-            return false;
-
-        Vector3 dropPosition = pickup.transform.position;
-
-        AttackBase newAttack = Instantiate(
-            pickup.AttackPrefab,
-            transform,
-            false
-        );
-
-        newAttack.Initialize(stats, attackOrigin);
-
-        AttackBase previousAttack = currentAttack;
-        AttackPickup previousItem = currentItem;
-
-        if (previousAttack != null)
+        Mouse mouse = Mouse.current;
+        if (mouse != null && aimCamera != null)
         {
-            previousAttack.CancelAttack();
-            previousAttack.gameObject.SetActive(false);
+            Ray ray = aimCamera.ScreenPointToRay(mouse.position.ReadValue());
+            Plane plane = new Plane(Vector3.forward, equipment.Origin.position);
+            if (plane.Raycast(ray, out float distance))
+            {
+                Vector2 direction = (Vector2)ray.GetPoint(distance) -
+                    (Vector2)equipment.Origin.position;
+                if (direction.sqrMagnitude > 0.0001f) return direction.normalized;
+            }
         }
-
-        currentAttack = newAttack;
-        currentItem = pickup;
-
-        // Храним подобранный предмет внутри героя выключенным.
-        currentItem.transform.SetParent(transform, true);
-        currentItem.gameObject.SetActive(false);
-
-        currentAttack.gameObject.SetActive(true);
-        currentAttack.enabled = true;
-
-        AttackChanged?.Invoke(currentAttack);
-
-        if (previousAttack != null)
-            Destroy(previousAttack.gameObject);
-
-        // Возвращаем сам старый предмет, а не создаём
-        // копию по ссылке на уничтоженный объект.
-        if (previousItem != null)
-            previousItem.Drop(dropPosition, this);
-
-        return true;
-    }
-
-    public void SetAimCamera(Camera roomCamera)
-    {
-        aimCamera = roomCamera;
-    }
-
-    private void OnDisable()
-    {
-        if (currentAttack != null)
-            currentAttack.CancelAttack();
+        return movement != null ? movement.LastDirection : Vector2.down;
     }
 }

@@ -1,6 +1,9 @@
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
 [RequireComponent(typeof(Rigidbody2D), typeof(PlayerAttack))]
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "PlayerAnimation")]
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
@@ -103,3 +106,4 @@ public class PlayerAnimation : MonoBehaviour
             animator.ResetTrigger(AttackHash);
     }
 }
+

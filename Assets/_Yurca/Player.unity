@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 8545955378363383884, guid: 4d7f8e8b685260d49bb1539d5c31508e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -471,7 +475,10 @@ PrefabInstance:
       addedObject: {fileID: 2122043170}
     - targetCorrespondingSourceObject: {fileID: 8545955378363383884, guid: 4d7f8e8b685260d49bb1539d5c31508e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2122043169}
+      addedObject: {fileID: 2122043175}
+    - targetCorrespondingSourceObject: {fileID: 8545955378363383884, guid: 4d7f8e8b685260d49bb1539d5c31508e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2122043176}
   m_SourcePrefab: {fileID: 100100000, guid: 4d7f8e8b685260d49bb1539d5c31508e, type: 3}
 --- !u!1 &2122043167 stripped
 GameObject:
@@ -483,23 +490,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8316176944913912084, guid: 4d7f8e8b685260d49bb1539d5c31508e, type: 3}
   m_PrefabInstance: {fileID: 2122043166}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2122043169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122043167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867bca49ab745384ea94af5cf8449134, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeAttack
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  hitDelay: 0.001
-  slashEffectPrefab: {fileID: 7385396933264051448, guid: eee595fb518c8df4f9647a72ec632338, type: 3}
 --- !u!114 &2122043170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,8 +503,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   aimCamera: {fileID: 1886204174}
-  attackOrigin: {fileID: 2025090327}
-  startingAttack: {fileID: 2122043169}
+--- !u!114 &2122043175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122043167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e8e482b9ff30a408b99a870ca463b2, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+--- !u!114 &2122043176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122043167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92618e92bbc499840b25d9eaecb7409c, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerEquipment
+  actionOrigin: {fileID: 2025090327}
+  startingAttack: {fileID: 2053573381478802992, guid: ade918b780f538a4ead8e2c7ef305135, type: 3}
+  startingDash: {fileID: 0}
+  startingAbility1: {fileID: 0}
+  startingAbility2: {fileID: 0}
+  startingUltimate: {fileID: 0}
 --- !u!114 &2122043171
 MonoBehaviour:
   m_ObjectHideFlags: 0

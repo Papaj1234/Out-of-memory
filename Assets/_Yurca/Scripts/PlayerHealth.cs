@@ -1,7 +1,10 @@
 using System;
 using UnityEngine;
 
+using UnityEngine.Scripting.APIUpdating;
+
 [RequireComponent(typeof(PlayerStats))]
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "Assembly-CSharp", sourceClassName: "PlayerHealth")]
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     private const float InvulnerabilityDuration = 1f;
@@ -22,6 +25,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         stats = GetComponent<PlayerStats>();
         CurrentHealth = MaxHealth;
+    }
+
+    public void GrantInvulnerability(float duration)
+    {
+        if (IsDead || duration <= 0f) return;
+        invulnerableUntil = Mathf.Max(invulnerableUntil, Time.time + duration);
     }
 
     public void TakeDamage(float damage)
@@ -65,3 +74,4 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         HealthChanged?.Invoke(CurrentHealth, MaxHealth);
     }
 }
+
