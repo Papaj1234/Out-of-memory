@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Assets._Herman.Scripts.Rooms;
+using UnityEngine.SceneManagement;
+using Assets._Herman.Scripts.UI;
 
 namespace Assets._Herman.Scripts.Level
 {
@@ -11,22 +13,58 @@ namespace Assets._Herman.Scripts.Level
         [SerializeField] private Camera cam;
         [Tooltip("Защита от двойного перехода")]
         [SerializeField] private float travelCooldown = 0.3f;
+        [Tooltip("Через сколько секунд после смерти начинать новый забег")]
+        [SerializeField] private float restartDelay = 2f;
+        [SerializeField] private float fadeOutDuration = 1f;
+        private bool restarting;
 
         public Room CurrentRoom { get; private set; }
 
         private LevelBuilder level;
         private float lastTravelTime = -999f;
 
+        private PlayerHealth playerHealth;
+
         private void OnEnable()
         {
             LevelBuilder.Built += OnLevelBuilt;
             Door.PlayerTouched += OnDoorTouched;
+
+            if (player != null)
+                playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+                playerHealth.Died += OnPlayerDied;
         }
 
         private void OnDisable()
         {
             LevelBuilder.Built -= OnLevelBuilt;
             Door.PlayerTouched -= OnDoorTouched;
+
+            if (playerHealth != null)
+                playerHealth.Died -= OnPlayerDied;
+        }
+
+        private void OnPlayerDied()
+        {
+            if (restarting) return;
+            restarting = true;
+            StartCoroutine(DeathSequence());
+        }
+
+        private System.Collections.IEnumerator DeathSequence()
+        {
+            yield return new WaitForSeconds(restartDelay);   // пауза, видно что умер
+
+            if (ScreenFader.Instance != null)
+                yield return ScreenFader.Instance.FadeOut(fadeOutDuration);   // затемнение
+
+            RestartRun();   // новый уровень, он сам плавно проявится
+        }
+
+        private void RestartRun()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void OnLevelBuilt(LevelBuilder builder)

@@ -28,11 +28,11 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     weight: 1
   rockVariants:
-  - sprite: {fileID: -7552543066158216464, guid: b24a4ab85669b4a49a2808e3542b7a3a, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 0}
+  - sprite: {fileID: 21300000, guid: b24a4ab85669b4a49a2808e3542b7a3a, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     weight: 0
-  - sprite: {fileID: -8557339059494685252, guid: 4025995ab1fceda45b29eb400fff94be, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 0}
+  - sprite: {fileID: 21300000, guid: 4025995ab1fceda45b29eb400fff94be, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     weight: 0
   pitVariants:
   - sprite: {fileID: 21300000, guid: f1e253435ece9804d96408e886adc38a, type: 3}
