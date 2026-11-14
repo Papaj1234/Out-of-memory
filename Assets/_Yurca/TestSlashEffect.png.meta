@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: 0e8cc70e3bf8bc54ab3ddf3c355fba62
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8730091818094371073
+    second: TestAnimation_0
+  - first:
+      213: -9017922800055908727
+    second: TestAnimation_1
+  - first:
+      213: 5832927446039508530
+    second: TestAnimation_2
+  - first:
+      213: -8875963340103878624
+    second: TestAnimation_3
+  - first:
+      213: 484127754696959120
+    second: TestAnimation_4
+  - first:
+      213: -5784231122326970794
+    second: TestAnimation_5
+  - first:
+      213: 1152047356711759018
+    second: TestAnimation_6
+  - first:
+      213: 2149093461686980747
+    second: TestAnimation_7
+  - first:
+      213: -3514077044760550110
+    second: TestAnimation_8
+  - first:
+      213: 6387635143656212525
+    second: TestAnimation_9
+  - first:
+      213: 5131819617740256261
+    second: TestAnimation_10
+  - first:
+      213: -3589340765014928915
+    second: TestAnimation_11
+  - first:
+      213: -7868113799887733245
+    second: TestAnimation_12
+  - first:
+      213: -9184359362930195114
+    second: TestAnimation_13
+  - first:
+      213: -4489168223780833808
+    second: TestAnimation_14
+  - first:
+      213: -7354807159561257707
+    second: TestAnimation_15
+  - first:
+      213: -7671891261868368786
+    second: TestAnimation_16
+  - first:
+      213: 1038297497883203210
+    second: TestAnimation_17
+  - first:
+      213: -4595425473855584949
+    second: TestAnimation_18
+  - first:
+      213: -1038292275887121628
+    second: TestAnimation_19
+  - first:
+      213: -7201644858529250722
+    second: TestAnimation_20
+  - first:
+      213: -4617762887437905161
+    second: TestAnimation_21
+  - first:
+      213: -3652569420286859975
+    second: TestAnimation_22
+  - first:
+      213: 8307760724408651366
+    second: TestAnimation_23
+  - first:
+      213: -8841563206054768968
+    second: TestAnimation_24
+  - first:
+      213: -3352889352804634590
+    second: TestAnimation_25
+  - first:
+      213: 8799190710845150936
+    second: TestAnimation_26
+  - first:
+      213: 6799057711631358096
+    second: TestAnimation_27
+  - first:
+      213: 927937063112773337
+    second: TestAnimation_28
+  - first:
+      213: -3610318959064297887
+    second: TestAnimation_29
+  - first:
+      213: 4123955132440245416
+    second: TestAnimation_30
+  - first:
+      213: 7903366062252365886
+    second: TestAnimation_31
+  - first:
+      213: 4108163381284552141
+    second: TestAnimation_32
+  - first:
+      213: -940868843669286983
+    second: TestAnimation_33
+  - first:
+      213: -1819982831820407968
+    second: TestAnimation_34
+  - first:
+      213: -6513219712853019862
+    second: TestAnimation_35
+  - first:
+      213: -8287405660307119676
+    second: TestAnimation_36
+  - first:
+      213: 7061644829365372044
+    second: TestAnimation_37
+  - first:
+      213: 4103919208079421410
+    second: TestAnimation_38
+  - first:
+      213: -3018495007102864740
+    second: TestAnimation_39
+  - first:
+      213: 196004616825751131
+    second: TestAnimation_40
+  - first:
+      213: 891855868579187119
+    second: TestAnimation_41
+  - first:
+      213: 4009288536183987088
+    second: TestAnimation_42
+  - first:
+      213: 4507321739919871145
+    second: TestAnimation_43
+  - first:
+      213: 5590424508905926951
+    second: TestAnimation_44
+  - first:
+      213: -4420901572873377370
+    second: TestAnimation_45
+  - first:
+      213: -2454722569467276045
+    second: TestAnimation_46
+  - first:
+      213: -8097101031197110728
+    second: TestAnimation_47
+  - first:
+      213: -6242393158532545161
+    second: TestAnimation_48
+  - first:
+      213: -135678809650336607
+    second: TestAnimation_49
+  - first:
+      213: -5347359876382615549
+    second: TestAnimation_50
+  - first:
+      213: -3463878401229653424
+    second: TestAnimation_51
+  - first:
+      213: 668999204604080821
+    second: TestAnimation_52
+  - first:
+      213: 762987398714681607
+    second: TestAnimation_53
+  - first:
+      213: -5139810100259584185
+    second: TestAnimation_54
+  - first:
+      213: -1880098836046796333
+    second: TestAnimation_55
+  - first:
+      213: 3753750044440756284
+    second: TestAnimation_56
+  - first:
+      213: 3041220665518598728
+    second: TestAnimation_57
+  - first:
+      213: -4115949994637568491
+    second: TestAnimation_58
+  - first:
+      213: -2222060705689577612
+    second: TestAnimation_59
+  - first:
+      213: 6511431927092138476
+    second: TestAnimation_60
+  - first:
+      213: 1425698347474981951
+    second: TestAnimation_61
+  - first:
+      213: -2682798430253749838
+    second: TestAnimation_62
+  - first:
+      213: -3955909584796386822
+    second: TestAnimation_63
+  - first:
+      213: -7954099762814349286
+    second: TestAnimation_64
+  - first:
+      213: -4320583128754701307
+    second: TestAnimation_65
+  - first:
+      213: -3636229135299298625
+    second: TestAnimation_66
+  - first:
+      213: -1451241040490459869
+    second: TestAnimation_67
+  - first:
+      213: -8275562130088039286
+    second: TestAnimation_68
+  - first:
+      213: -8966947763043224415
+    second: TestAnimation_69
+  - first:
+      213: -7982169555153193651
+    second: TestAnimation_70
+  - first:
+      213: -7463525322315122758
+    second: TestAnimation_71
+  - first:
+      213: 8150644633390375704
+    second: TestAnimation_72
+  - first:
+      213: 1200693397255056973
+    second: TestAnimation_73
+  - first:
+      213: 1777271465654721358
+    second: TestAnimation_74
+  - first:
+      213: -8971656886007861836
+    second: TestAnimation_75
+  - first:
+      213: -1190562099454564533
+    second: TestAnimation_76
+  - first:
+      213: 1059201007565669054
+    second: TestAnimation_77
+  - first:
+      213: 246129446873891948
+    second: TestAnimation_78
+  - first:
+      213: -2638102873931114428
+    second: TestAnimation_79
+  - first:
+      213: 8250751475414431949
+    second: TestAnimation_80
+  - first:
+      213: -3573969065616850754
+    second: TestAnimation_81
+  - first:
+      213: 6045661185004472103
+    second: TestAnimation_82
+  - first:
+      213: 7951942060054560206
+    second: TestAnimation_83
+  - first:
+      213: -1542897339174281851
+    second: TestAnimation_84
+  - first:
+      213: 6051648934717980970
+    second: TestAnimation_85
+  - first:
+      213: -3056561367505985754
+    second: TestAnimation_86
+  - first:
+      213: 723402592215015958
+    second: TestAnimation_87
+  - first:
+      213: 6640793979773623325
+    second: TestAnimation_88
+  - first:
+      213: -1607637534676120356
+    second: TestAnimation_89
+  - first:
+      213: 1484007921323358416
+    second: TestAnimation_90
+  - first:
+      213: 4555862474249117972
+    second: TestAnimation_91
+  - first:
+      213: 8620249588657030422
+    second: TestAnimation_92
+  - first:
+      213: 6659251488651846065
+    second: TestAnimation_93
+  - first:
+      213: -289255639539771392
+    second: TestAnimation_94
+  - first:
+      213: 988964762182198508
+    second: TestAnimation_95
+  - first:
+      213: -4546033172540215121
+    second: TestAnimation_96
+  - first:
+      213: 8810750610083625207
+    second: TestAnimation_97
+  - first:
+      213: -8733061167111464678
+    second: TestAnimation_98
+  - first:
+      213: -3405817560854246438
+    second: TestAnimation_99
+  - first:
+      213: 7159515824771468493
+    second: TestAnimation_100
+  - first:
+      213: 1100480843988838213
+    second: TestAnimation_101
+  - first:
+      213: -8495127466087819644
+    second: TestAnimation_102
+  - first:
+      213: -4870681312563831609
+    second: TestAnimation_103
+  - first:
+      213: -1290517546506976059
+    second: TestAnimation_104
+  - first:
+      213: 7877230402716186998
+    second: TestAnimation_105
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TestSlashEffect_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58e4a804fcc62c4f91d3adb50b06874
+      internalID: -1499766987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestSlashEffect_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e13759287bc9c45bccf9bc8696c257
+      internalID: -289697159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestSlashEffect_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6201bd187a1d24b4ba60c3bdf748ff3b
+      internalID: 1323997049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestSlashEffect_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779368b824f1cd547bf91636589f171e
+      internalID: -1199013729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestSlashEffect_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5c160302967d245ba4c20fda875814
+      internalID: 430338704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestSlashEffect_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89475484f3939ff4388b15932e330d1f
+      internalID: -1788909030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4b431dcc0342dfd4fa6288834d6522a5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":2.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      TestSlashEffect_0: -1499766987
+      TestSlashEffect_1: -289697159
+      TestSlashEffect_2: 1323997049
+      TestSlashEffect_3: -1199013729
+      TestSlashEffect_4: 430338704
+      TestSlashEffect_5: -1788909030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
