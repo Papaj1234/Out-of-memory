@@ -30,6 +30,9 @@ namespace Assets._Herman.Scripts.Rooms
         [Tooltip("Сколько клеток перед дверью всегда свободны")]
         [Min(1)] public int doorClearance = 2;
 
+        [Tooltip("Радиус свободной зоны в центре: 0 = только центральная клетка, 1 = квадрат 3x3")]
+        public Vector2Int centerClearance = new Vector2Int(1, 1);
+
         [Header("Features")]
         public List<RoomFeature> features = new List<RoomFeature>();
     }

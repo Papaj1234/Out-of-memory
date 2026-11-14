@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets._Herman.Scripts.Rooms
@@ -14,6 +13,7 @@ namespace Assets._Herman.Scripts.Rooms
             var layout = new RoomLayout(type.width, type.height, doors);
 
             ProtectDoors(layout, type.doorClearance);
+            ProtectCenter(layout, type.centerClearance);
 
             // ямы первыми — им нужно больше места
             PlacePatterns(layout, type.pitPatterns, Cell.Pit, RandomCount(rng, type.pitPatternCount), rng);
@@ -41,6 +41,19 @@ namespace Assets._Herman.Scripts.Rooms
                         layout.protectedCells[p.x, p.y] = true;
                 }
             }
+        }
+
+        private static void ProtectCenter(RoomLayout layout, Vector2Int radius)
+        {
+            if (radius.x < 0 || radius.y < 0) return;
+
+            int cx = layout.width / 2;
+            int cy = layout.height / 2;
+
+            for (int x = cx - radius.x; x <= cx + radius.x; x++)
+                for (int y = cy - radius.y; y <= cy + radius.y; y++)
+                    if (layout.InBounds(x, y))
+                        layout.protectedCells[x, y] = true;
         }
 
         private static void PlacePatterns(RoomLayout layout, List<ObstaclePattern> patterns,
