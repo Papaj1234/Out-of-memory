@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6214047130105545449}
   - component: {fileID: 7368157179664598578}
   - component: {fileID: 2053573381478802992}
-  - component: {fileID: 5909738789869324026}
   m_Layer: 0
   m_Name: MeleeAttackPickup
   m_TagString: Untagged
@@ -144,16 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackPickup
   attackPrefab: {fileID: 989823704092891031, guid: 202a78836c6d9ed41afdabe7012f0e8f, type: 3}
---- !u!114 &5909738789869324026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3266839062786557315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a619947f3b413514db0a090b86c27383, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackItemReference
-  worldPrefab: {fileID: 2053573381478802992}
+  dropPickupDelay: 1

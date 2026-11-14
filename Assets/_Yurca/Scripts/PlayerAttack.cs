@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private AttackBase currentAttack;
 
     // Префаб предмета, соответствующего текущей атаке.
-    private AttackPickup currentItemPrefab;
+    private AttackPickup currentItem;
 
     private void Awake()
     {
@@ -68,21 +68,8 @@ public class PlayerAttack : MonoBehaviour
         if (pickup == null || pickup.AttackPrefab == null)
             return false;
 
-        // Получаем исходный префаб этого предмета.
-        AttackItemReference itemReference =
-            pickup.GetComponent<AttackItemReference>();
+        Vector3 dropPosition = pickup.transform.position;
 
-        if (itemReference == null || itemReference.WorldPrefab == null)
-        {
-            Debug.LogWarning(
-                "У предмета не назначен World Prefab.",
-                pickup
-            );
-
-            return false;
-        }
-
-        // Создаём только логику новой атаки.
         AttackBase newAttack = Instantiate(
             pickup.AttackPrefab,
             transform,
@@ -92,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
         newAttack.Initialize(stats, attackOrigin);
 
         AttackBase previousAttack = currentAttack;
-        AttackPickup previousItemPrefab = currentItemPrefab;
+        AttackPickup previousItem = currentItem;
 
         if (previousAttack != null)
         {
@@ -101,29 +88,24 @@ public class PlayerAttack : MonoBehaviour
         }
 
         currentAttack = newAttack;
-        currentItemPrefab = itemReference.WorldPrefab;
+        currentItem = pickup;
+
+        // Храним подобранный предмет внутри героя выключенным.
+        currentItem.transform.SetParent(transform, true);
+        currentItem.gameObject.SetActive(false);
 
         currentAttack.gameObject.SetActive(true);
         currentAttack.enabled = true;
 
-        // PlayerAnimation переподписывается на новую атаку.
         AttackChanged?.Invoke(currentAttack);
 
         if (previousAttack != null)
             Destroy(previousAttack.gameObject);
 
-        if (previousItemPrefab != null)
-        {
-            // Оставляем старый предмет там,
-            // где лежал только что подобранный.
-            AttackPickup droppedItem = Instantiate(
-                previousItemPrefab,
-                pickup.transform.position,
-                Quaternion.identity
-            );
-
-            droppedItem.IgnoreUntilPlayerLeaves(this);
-        }
+        // Возвращаем сам старый предмет, а не создаём
+        // копию по ссылке на уничтоженный объект.
+        if (previousItem != null)
+            previousItem.Drop(dropPosition, this);
 
         return true;
     }

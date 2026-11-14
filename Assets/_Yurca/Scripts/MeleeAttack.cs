@@ -9,6 +9,8 @@ public class MeleeAttack : AttackBase
     [Tooltip("Задержка перед нанесением урона")]
     [SerializeField, Min(0f)] private float hitDelay = 0.08f;
 
+    [SerializeField, Min(0f)] private float multiplier = 0f;
+
     [SerializeField] private GameObject slashEffectPrefab;
 
     // Исходный угол изображения эффекта.
@@ -29,7 +31,7 @@ public class MeleeAttack : AttackBase
         // Все параметры удара берём из характеристик игрока.
         float range = Stats.AttackRange;
         float angle = Stats.AttackAngle;
-        float damage = Stats.Damage;
+        float damage = Stats.Damage * multiplier;
         float duration = Mathf.Max(0.01f, Stats.AttackDuration);
         float delay = Mathf.Clamp(hitDelay, 0f, duration);
 

@@ -5,11 +5,16 @@ public class AttackPickup : MonoBehaviour
 {
     [SerializeField] private AttackBase attackPrefab;
 
+    [Tooltip("Сколько секунд нельзя подбирать выпавший предмет")]
+    [SerializeField, Min(0f)] private float dropPickupDelay = 0.5f;
+
     public AttackBase AttackPrefab => attackPrefab;
 
     private CircleCollider2D pickupCollider;
     private PlayerAttack ignoredPlayer;
+
     private bool isPickedUp;
+    private float pickupAllowedTime;
 
     private void Awake()
     {
@@ -22,19 +27,31 @@ public class AttackPickup : MonoBehaviour
         GetComponent<CircleCollider2D>().isTrigger = true;
     }
 
-    // Выпавший предмет временно игнорирует того,
-    // кто его только что выбросил.
-    public void IgnoreUntilPlayerLeaves(PlayerAttack player)
+    public void Drop(Vector3 position, PlayerAttack previousOwner)
     {
-        ignoredPlayer = player;
+        transform.SetParent(null, true);
+        transform.position = position;
+
+        isPickedUp = false;
+        ignoredPlayer = previousOwner;
+
+        // Минимальная пауза нужна и при нулевом значении
+        // в Inspector, чтобы физика успела обновиться.
+        pickupAllowedTime =
+            Time.time + Mathf.Max(0.1f, dropPickupDelay);
+
+        gameObject.SetActive(true);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (ignoredPlayer == null)
             return;
 
-        // Проверяем, отошёл ли герой от области подбора.
+        // Во время задержки не снимаем блокировку владельца.
+        if (Time.time < pickupAllowedTime)
+            return;
+
         Collider2D[] playerColliders =
             ignoredPlayer.GetComponentsInChildren<Collider2D>();
 
@@ -50,6 +67,7 @@ public class AttackPickup : MonoBehaviour
                 return;
         }
 
+        // Игрок вышел из области предмета.
         ignoredPlayer = null;
     }
 
@@ -68,22 +86,18 @@ public class AttackPickup : MonoBehaviour
         if (isPickedUp || attackPrefab == null)
             return;
 
+        if (Time.time < pickupAllowedTime)
+            return;
+
         PlayerAttack player =
             other.GetComponentInParent<PlayerAttack>();
 
         if (player == null || player == ignoredPlayer)
             return;
 
-        // Блокируем повторные вызовы от нескольких коллайдеров.
         isPickedUp = true;
 
         if (!player.TryEquipItem(this))
-        {
             isPickedUp = false;
-            return;
-        }
-
-        gameObject.SetActive(false);
-        Destroy(gameObject);
     }
 }
