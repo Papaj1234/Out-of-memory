@@ -62,6 +62,7 @@ MonoBehaviour:
   floorMap: {fileID: 2926127173068793820}
   blockMap: {fileID: 1223070763132682758}
   contentRoot: {fileID: 0}
+  doorPrefab: {fileID: 966380386039509595, guid: b06cecc7e65ceaf478995135e88d75be, type: 3}
 --- !u!1 &5591677033270354442
 GameObject:
   m_ObjectHideFlags: 0

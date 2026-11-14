@@ -32,6 +32,13 @@ namespace Assets._Herman.Scripts.Rooms
         [Tooltip("Радиус свободной зоны в центре: 0 = только центральная клетка, 1 = квадрат 3x3, -1 = выкл")]
         public Vector2Int centerClearance = new Vector2Int(1, 1);
 
+        [Header("Doors")]
+        [Tooltip("Двери открыты сразу (стартовая комната). Иначе — откроются после зачистки")]
+        public bool doorsStartOpen = false;
+
+        [Tooltip("Своя дверь для этого типа (например, у босса). Пусто = обычная")]
+        public Door doorPrefabOverride;
+
         [Header("Features")]
         public List<RoomFeature> features = new List<RoomFeature>();
     }
