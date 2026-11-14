@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets._Herman.Scripts.Rooms;
 
 public class EnemyProjectile : ProjectileBase
 {
@@ -8,6 +9,7 @@ public class EnemyProjectile : ProjectileBase
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.isTrigger) return;
+        if (other.GetComponent<ProjectilePassThrough>() != null) return; // над ямой пролетаем
         if (other.GetComponentInParent<EnemyBase>() != null) return;
 
         var health = other.GetComponentInParent<PlayerHealth>();

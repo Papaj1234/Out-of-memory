@@ -10,6 +10,7 @@ namespace Assets._Herman.Scripts.Rooms
     {
         [SerializeField] private Tilemap floorMap;
         [SerializeField] private Tilemap blockMap;
+        [SerializeField] private Tilemap pitMap;     // ямы — отдельно, сквозь них летят пули
         [SerializeField] private Transform contentRoot;
         [SerializeField] private Door doorPrefab;
 
@@ -333,7 +334,7 @@ namespace Assets._Herman.Scripts.Rooms
                             blockMap.SetTile(pos, rockSet.Pick(roll));
                             break;
                         case Cell.Pit:
-                            blockMap.SetTile(pos, PickPit(x, y, roll));
+                            (pitMap != null ? pitMap : blockMap).SetTile(pos, PickPit(x, y, roll));
                             break;
                     }
                 }

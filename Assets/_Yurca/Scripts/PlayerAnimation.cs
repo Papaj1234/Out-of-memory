@@ -8,11 +8,15 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
+    [Tooltip("Через сколько секунд после остановки/удара повернуться лицом к камере")]
+    [SerializeField] private float faceCameraDelay = 0f;
+
     private Rigidbody2D body;
     private PlayerAttack playerAttack;
     private AttackBase subscribedAttack;
 
     private Vector2 lastDirection = Vector2.down;
+    private float idleTime;
 
     private static readonly int IsMovingHash =
         Animator.StringToHash("IsMoving");
@@ -81,7 +85,16 @@ public class PlayerAnimation : MonoBehaviour
         bool isMoving = velocity.sqrMagnitude > 0.01f;
 
         if (isMoving)
+        {
             lastDirection = velocity.normalized;
+            idleTime = 0f;
+        }
+        else
+        {
+            idleTime += Time.deltaTime;
+            if (idleTime >= faceCameraDelay)
+                lastDirection = Vector2.down; // стоит — смотрит на игрока
+        }
 
         animator.SetBool(IsMovingHash, isMoving);
         animator.SetFloat(MoveXHash, lastDirection.x);
@@ -94,6 +107,7 @@ public class PlayerAnimation : MonoBehaviour
             return;
 
         lastDirection = direction;
+        idleTime = 0f;
 
         animator.SetFloat(AttackXHash, direction.x);
         animator.SetFloat(AttackYHash, direction.y);
@@ -106,4 +120,3 @@ public class PlayerAnimation : MonoBehaviour
             animator.ResetTrigger(AttackHash);
     }
 }
-

@@ -94,24 +94,24 @@ namespace Assets._Herman.Scripts.Level
 
             // от двери выхода в ту же сторону: дверь соседа -> край пола -> ещё клетка
             Vector3 dir = (Vector2)LevelBuilder.Offset(door.Side);
-            Vector3 entry = door.transform.position + dir * 3f;
+            Vector3 entry = door.transform.position + dir * 2f;
 
             Debug.Log($"Travel {door.Side}: {CurrentRoom.name} -> {target.name}, entry {entry}");
-            EnterRoom(target, entry);
+            EnterRoom(target, entry, keepVelocity: true);
         }
 
-        private void EnterRoom(Room room, Vector3 playerPos)
+        private void EnterRoom(Room room, Vector3 playerPos, bool keepVelocity = false)
         {
             // включаем только нужную комнату
             foreach (var r in level.Rooms)
                 if (r != null) r.gameObject.SetActive(r == room);
 
             CurrentRoom = room;
-            MovePlayer(playerPos);
+            MovePlayer(playerPos, keepVelocity);
             MoveCamera(room.CenterWorld);
         }
 
-        private void MovePlayer(Vector3 pos)
+        private void MovePlayer(Vector3 pos, bool keepVelocity)
         {
             if (player == null) return;
 
@@ -119,7 +119,7 @@ namespace Assets._Herman.Scripts.Level
             if (rb != null)
             {
                 rb.position = pos;
-                rb.linearVelocity = Vector2.zero;
+                if (!keepVelocity) rb.linearVelocity = Vector2.zero;
             }
             player.position = pos;
         }
