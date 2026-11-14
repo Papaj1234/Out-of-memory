@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class EnemyChaseState : IEnemyState
 {
     private EnemyBrain enemy;
@@ -18,9 +16,17 @@ public class EnemyChaseState : IEnemyState
 
     public void Update()
     {
+        if (enemy.Player == null)
+            return;
+
+        if (enemy.IsPlayerInAttackRange())
+        {
+            enemy.ChangeState(enemy.AttackState);
+            return;
+        }
+
         Vector2 direction =
-            (enemy.Player.position -
-             enemy.transform.position).normalized;
+            enemy.DirectionToPlayer();
 
         enemy.transform.position +=
             (Vector3)(direction *
