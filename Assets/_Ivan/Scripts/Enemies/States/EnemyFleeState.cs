@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyFleeState : IEnemyState
 {
-    private EnemyBrain enemy;
+    private MeleeEnemyBrain enemy;
 
-    public EnemyFleeState(EnemyBrain enemy)
+    public EnemyFleeState(MeleeEnemyBrain enemy)
     {
         this.enemy = enemy;
     }

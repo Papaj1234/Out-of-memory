@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyWindupState : IEnemyState
 {
-    private EnemyBrain enemy;
+    private MeleeEnemyBrain enemy;
 
     private float timer;
 
-    public EnemyWindupState(EnemyBrain enemy)
+    public EnemyWindupState(MeleeEnemyBrain enemy)
     {
         this.enemy = enemy;
     }

@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class EnemyBrain : EnemyBase
+public class MeleeEnemyBrain : CombatEnemyBase
 {
-    private EnemyStateMachine stateMachine;
+    [Header("Melee Attack")]
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float windupDuration = 0.4f;
+    [SerializeField] private float dashSpeed = 8f;
+    [SerializeField] private float dashDistance = 2f;
+    [SerializeField] private float attackCooldown = 1f;
 
     private EnemyChaseState chaseState;
     private EnemyWindupState windupState;
@@ -13,19 +18,23 @@ public class EnemyBrain : EnemyBase
     private bool hasHitPlayer;
     private bool isFleeing;
 
+    public float AttackRange => attackRange;
+    public float WindupDuration => windupDuration;
+    public float DashSpeed => dashSpeed;
+    public float DashDistance => dashDistance;
+    public float AttackCooldown => attackCooldown;
+
+    public bool IsFleeing => isFleeing;
+
     public EnemyChaseState ChaseState => chaseState;
     public EnemyWindupState WindupState => windupState;
     public EnemyAttackState AttackState => attackState;
     public EnemyRecoveryState RecoveryState => recoveryState;
     public EnemyFleeState FleeState => fleeState;
 
-    public bool IsFleeing => isFleeing;
-
     protected override void Start()
     {
         base.Start();
-
-        stateMachine = new EnemyStateMachine();
 
         chaseState = new EnemyChaseState(this);
         windupState = new EnemyWindupState(this);
@@ -36,19 +45,9 @@ public class EnemyBrain : EnemyBase
         stateMachine.ChangeState(chaseState);
     }
 
-    private void Update()
+    public bool IsPlayerInAttackRange()
     {
-        stateMachine.Update();
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(10);
-        }
-    }
-
-    public void ChangeState(IEnemyState state)
-    {
-        stateMachine.ChangeState(state);
+        return DistanceToPlayer() <= attackRange;
     }
 
     public void ResetAttack()
@@ -77,5 +76,20 @@ public class EnemyBrain : EnemyBase
 
             ChangeState(recoveryState);
         }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(10);
+
+            Debug.Log(
+                $"HP: {HealthPercent:P0}");
+        }
+        #endif
     }
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyChaseState : IEnemyState
 {
-    private EnemyBrain enemy;
+    private MeleeEnemyBrain enemy;
 
-    public EnemyChaseState(EnemyBrain enemy)
+    public EnemyChaseState(MeleeEnemyBrain enemy)
     {
         this.enemy = enemy;
     }

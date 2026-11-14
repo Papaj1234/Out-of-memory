@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyRecoveryState : IEnemyState
 {
-    private EnemyBrain enemy;
+    private MeleeEnemyBrain enemy;
 
     private float timer;
 
-    public EnemyRecoveryState(EnemyBrain enemy)
+    public EnemyRecoveryState(MeleeEnemyBrain enemy)
     {
         this.enemy = enemy;
     }

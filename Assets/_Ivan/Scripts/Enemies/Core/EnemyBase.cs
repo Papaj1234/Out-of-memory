@@ -5,17 +5,6 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 3f;
 
-    [Header("Attack")]
-    [SerializeField] protected float attackRange = 1.5f;
-
-    [SerializeField] protected float windupDuration = 0.4f;
-
-    [SerializeField] protected float dashSpeed = 8f;
-    [SerializeField] protected float dashDistance = 2f;
-    [SerializeField] protected float attackCooldown = 1f;
-
-    [SerializeField] protected int damage = 10;
-
     [Header("Health")]
     [SerializeField] protected int maxHealth = 100;
 
@@ -23,12 +12,6 @@ public abstract class EnemyBase : MonoBehaviour
     protected Transform player;
 
     public float MoveSpeed => moveSpeed;
-    public float AttackRange => attackRange;
-    public float WindupDuration => windupDuration;
-    public float DashSpeed => dashSpeed;
-    public float DashDistance => dashDistance;
-    public float AttackCooldown => attackCooldown;
-
     public Transform Player => player;
 
     public float HealthPercent =>
@@ -62,15 +45,14 @@ public abstract class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public bool IsPlayerInAttackRange()
+    public float DistanceToPlayer()
     {
         if (player == null)
-            return false;
+            return float.MaxValue;
 
         return Vector2.Distance(
-                   transform.position,
-                   player.position)
-               <= attackRange;
+            transform.position,
+            player.position);
     }
 
     public Vector2 DirectionToPlayer()

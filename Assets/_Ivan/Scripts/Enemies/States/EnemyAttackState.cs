@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class EnemyAttackState : IEnemyState
 {
-    private EnemyBrain enemy;
+    private MeleeEnemyBrain enemy;
 
     private Vector2 attackDirection;
     private Vector2 startPosition;
 
-    public EnemyAttackState(EnemyBrain enemy)
+    public EnemyAttackState(MeleeEnemyBrain enemy)
     {
         this.enemy = enemy;
     }
