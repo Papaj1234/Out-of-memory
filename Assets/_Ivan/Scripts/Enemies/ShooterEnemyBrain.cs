@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShooterEnemyBrain : CombatEnemyBase
 {
@@ -63,7 +64,7 @@ public class ShooterEnemyBrain : CombatEnemyBase
         currentCooldown -= Time.deltaTime;
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame)
         {
             TakeDamage(10);
 
