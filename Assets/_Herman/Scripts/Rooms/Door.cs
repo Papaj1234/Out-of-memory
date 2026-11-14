@@ -5,9 +5,12 @@ namespace Assets._Herman.Scripts.Rooms
     public class Door : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private Collider2D blocker;
+        [SerializeField] private Collider2D blocker;   // закрыта — стена, открыта — триггер-портал
         [SerializeField] private Sprite openSprite;
         [SerializeField] private Sprite closedSprite;
+
+        // Герой коснулся открытой двери — RoomNavigator переносит его в соседнюю комнату
+        public static event System.Action<Door> PlayerTouched;
 
         public bool IsOpen { get; private set; }
         public Doors Side { get; private set; }
@@ -33,8 +36,19 @@ namespace Assets._Herman.Scripts.Rooms
         {
             IsOpen = open;
             if (spriteRenderer != null) spriteRenderer.sprite = open ? openSprite : closedSprite;
-            if (blocker != null) blocker.enabled = !open;
-            // TODO: анимация и звук открытия/закрытия
+            if (blocker != null)
+            {
+                blocker.enabled = true;
+                blocker.isTrigger = open;
+            }
+            // TODO: анимация и звук
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!IsOpen) return;
+            if (other.GetComponentInParent<PlayerStats>() == null) return;
+            PlayerTouched?.Invoke(this);
         }
     }
 }

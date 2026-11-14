@@ -19,6 +19,8 @@ namespace Assets._Herman.Scripts.Rooms
         public IReadOnlyList<Door> DoorList => doors;
         public bool IsCleared { get; private set; }
         public int AliveEnemies => aliveEnemies.Count;
+        public Vector2Int GridPos { get; set; }
+        public Vector3 CenterWorld => CellToWorld(Layout.width / 2, Layout.height / 2);
 
         // Для камеры, UI и т.п.
         public static event System.Action<Room> PlayerEntered;
@@ -190,6 +192,22 @@ namespace Assets._Herman.Scripts.Rooms
                         result.Add(c);
                 }
             return result;
+        }
+
+        // Где появляется герой, вошедший через дверь на стороне side
+        public Vector3 EntryPoint(Doors side)
+        {
+            foreach (var (cell, inward) in Layout.GetDoors())
+            {
+                if (SideFromInward(inward) != side) continue;
+
+                var inside = cell + inward; // на клетку глубже, чтобы сразу сработал вход в комнату
+                if (Layout.InBounds(inside.x, inside.y) && Layout[inside.x, inside.y] == Cell.Floor)
+                    return CellToWorld(inside.x, inside.y);
+
+                return CellToWorld(cell.x, cell.y);
+            }
+            return CenterWorld;
         }
 
         // ===== Триггер входа =====

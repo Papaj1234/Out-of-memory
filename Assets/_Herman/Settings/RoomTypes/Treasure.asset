@@ -48,6 +48,6 @@ MonoBehaviour:
   centerClearance: {x: 1, y: 1}
   doorPrefabOverride: {fileID: 0}
   enemyPrefabs: []
-  enemyCount: {x: 2, y: 4}
+  enemyCount: {x: 0, y: 0}
   features:
   - {fileID: 11400000, guid: fa0fd645842e89144ac2eee5822eb3e3, type: 2}

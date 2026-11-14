@@ -28,13 +28,10 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     weight: 1
   rockVariants:
-  - sprite: {fileID: 0}
+  - sprite: {fileID: -7552543066158216464, guid: b24a4ab85669b4a49a2808e3542b7a3a, type: 3}
     color: {r: 0, g: 0, b: 0, a: 0}
     weight: 0
-  - sprite: {fileID: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    weight: 0
-  - sprite: {fileID: 0}
+  - sprite: {fileID: -8557339059494685252, guid: 4025995ab1fceda45b29eb400fff94be, type: 3}
     color: {r: 0, g: 0, b: 0, a: 0}
     weight: 0
   pitVariants:
@@ -70,6 +67,8 @@ MonoBehaviour:
   doorClearance: 2
   centerClearance: {x: 1, y: 1}
   doorPrefabOverride: {fileID: 0}
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 2474291911113000453, guid: 6c2e588a0007b29469e6667e9889fad8, type: 3}
+  - {fileID: 3105933871004422413, guid: 3b574041773c2ef418b0538ee35438b0, type: 3}
   enemyCount: {x: 2, y: 4}
   features: []
