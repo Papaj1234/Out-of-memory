@@ -9,28 +9,18 @@ public class EnemyFleeState : IEnemyState
         this.enemy = enemy;
     }
 
-    public void Enter()
-    {
-        Debug.Log("ENTER FLEE");
-    }
+    public void Enter() { }
 
     public void Update()
     {
         if (enemy.Player == null)
+        {
+            enemy.Stop();
             return;
+        }
 
-        Vector2 direction =
-            enemy.DirectionAwayFromPlayer();
-
-        enemy.transform.position +=
-            (Vector3)(
-                direction *
-                enemy.MoveSpeed *
-                Time.deltaTime);
+        enemy.Move(enemy.DirectionAwayFromPlayer(), enemy.MoveSpeed);
     }
 
-    public void Exit()
-    {
-        Debug.Log("EXIT FLEE");
-    }
+    public void Exit() { }
 }

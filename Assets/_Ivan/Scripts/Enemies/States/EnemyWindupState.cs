@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyWindupState : IEnemyState
 {
     private MeleeEnemyBrain enemy;
-
     private float timer;
 
     public EnemyWindupState(MeleeEnemyBrain enemy)
@@ -14,23 +13,17 @@ public class EnemyWindupState : IEnemyState
     public void Enter()
     {
         timer = enemy.WindupDuration;
-
-        Debug.Log("ENTER WINDUP");
+        enemy.Stop();
     }
 
     public void Update()
     {
+        enemy.Stop();
         timer -= Time.deltaTime;
 
         if (timer <= 0f)
-        {
-            enemy.ChangeState(
-                enemy.AttackState);
-        }
+            enemy.ChangeState(enemy.AttackState);
     }
 
-    public void Exit()
-    {
-        Debug.Log("EXIT WINDUP");
-    }
+    public void Exit() { }
 }

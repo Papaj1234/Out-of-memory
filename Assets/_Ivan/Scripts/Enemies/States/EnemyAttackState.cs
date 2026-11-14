@@ -6,6 +6,7 @@ public class EnemyAttackState : IEnemyState
 
     private Vector2 attackDirection;
     private Vector2 startPosition;
+    private float maxDashTime;
 
     public EnemyAttackState(MeleeEnemyBrain enemy)
     {
@@ -15,54 +16,33 @@ public class EnemyAttackState : IEnemyState
     public void Enter()
     {
         enemy.ResetAttack();
+        attackDirection = enemy.DirectionToPlayer();
+        startPosition = enemy.transform.position;
 
-        attackDirection =
-            enemy.DirectionToPlayer();
-
-        startPosition =
-            enemy.transform.position;
-
-        Debug.Log("ENTER ATTACK");
+        // если рывок упёрся в стену — не застревать навсегда
+        maxDashTime = enemy.DashSpeed > 0f ? enemy.DashDistance / enemy.DashSpeed * 1.5f : 0.5f;
     }
 
     public void Update()
     {
         if (enemy.Player == null)
-            return;
-
-        enemy.transform.position +=
-            (Vector3)(
-                attackDirection *
-                enemy.DashSpeed *
-                Time.deltaTime);
-
-        float distanceToPlayer =
-            Vector2.Distance(
-                enemy.transform.position,
-                enemy.Player.position);
-
-        if (distanceToPlayer < 0.3f)
         {
-            enemy.ChangeState(
-                enemy.RecoveryState);
-
+            enemy.Stop();
             return;
         }
 
-        float travelled =
-            Vector2.Distance(
-                startPosition,
-                enemy.transform.position);
+        enemy.Move(attackDirection, enemy.DashSpeed);
+        maxDashTime -= Time.deltaTime;
 
-        if (travelled >= enemy.DashDistance)
-        {
-            enemy.ChangeState(
-                enemy.RecoveryState);
-        }
+        float distanceToPlayer = Vector2.Distance(enemy.transform.position, enemy.Player.position);
+        float travelled = Vector2.Distance(startPosition, enemy.transform.position);
+
+        if (distanceToPlayer < 0.3f || travelled >= enemy.DashDistance || maxDashTime <= 0f)
+            enemy.ChangeState(enemy.RecoveryState);
     }
 
     public void Exit()
     {
-        Debug.Log("EXIT ATTACK");
+        enemy.Stop();
     }
 }

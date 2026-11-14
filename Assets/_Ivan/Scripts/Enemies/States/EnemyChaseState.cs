@@ -9,15 +9,15 @@ public class EnemyChaseState : IEnemyState
         this.enemy = enemy;
     }
 
-    public void Enter()
-    {
-        Debug.Log("ENTER CHASE");
-    }
+    public void Enter() { }
 
     public void Update()
     {
         if (enemy.Player == null)
+        {
+            enemy.Stop();
             return;
+        }
 
         if (enemy.HealthPercent <= 0.2f)
         {
@@ -27,24 +27,12 @@ public class EnemyChaseState : IEnemyState
 
         if (enemy.IsPlayerInAttackRange())
         {
-            enemy.ChangeState(
-                enemy.WindupState);
-
+            enemy.ChangeState(enemy.WindupState);
             return;
         }
 
-        Vector2 direction =
-            enemy.DirectionToPlayer();
-
-        enemy.transform.position +=
-            (Vector3)(
-                direction *
-                enemy.MoveSpeed *
-                Time.deltaTime);
+        enemy.Move(enemy.DirectionToPlayer(), enemy.MoveSpeed);
     }
 
-    public void Exit()
-    {
-        Debug.Log("EXIT CHASE");
-    }
+    public void Exit() { }
 }

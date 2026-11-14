@@ -4,43 +4,29 @@ public class ShooterRetreatState : IEnemyState
 {
     private ShooterEnemyBrain enemy;
 
-    public ShooterRetreatState(
-        ShooterEnemyBrain enemy)
+    public ShooterRetreatState(ShooterEnemyBrain enemy)
     {
         this.enemy = enemy;
     }
 
-    public void Enter()
-    {
-        Debug.Log("ENTER RETREAT");
-    }
+    public void Enter() { }
 
     public void Update()
     {
         if (enemy.Player == null)
-            return;
-
-        float distance =
-            enemy.DistanceToPlayer();
-
-        if (distance >= enemy.MinDistance)
         {
-            enemy.ChangeState(
-                enemy.ShootState);
-
+            enemy.Stop();
             return;
         }
 
-        Vector2 direction =
-            enemy.DirectionAwayFromPlayer();
+        if (enemy.DistanceToPlayer() >= enemy.MinDistance)
+        {
+            enemy.ChangeState(enemy.ShootState);
+            return;
+        }
 
-        enemy.transform.position +=
-            (Vector3)(direction *
-                      enemy.MoveSpeed *
-                      Time.deltaTime);
+        enemy.Move(enemy.DirectionAwayFromPlayer(), enemy.MoveSpeed);
     }
 
-    public void Exit()
-    {
-    }
+    public void Exit() { }
 }

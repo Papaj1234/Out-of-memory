@@ -10,12 +10,23 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected int currentHealth;
     protected Transform player;
+    protected Rigidbody2D rb;
 
     public float MoveSpeed => moveSpeed;
     public Transform Player => player;
 
     public float HealthPercent =>
-        (float)currentHealth / maxHealth;
+        maxHealth > 0 ? (float)currentHealth / maxHealth : 0f;
+
+    protected virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
+            rb.freezeRotation = true;
+        }
+    }
 
     protected virtual void Start()
     {
@@ -25,9 +36,22 @@ public abstract class EnemyBase : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player");
 
         if (playerObject != null)
-        {
             player = playerObject.transform;
-        }
+    }
+
+    // Движение через физику — упирается в стены, камни, ямы
+    public void Move(Vector2 direction, float speed)
+    {
+        if (rb != null)
+            rb.linearVelocity = direction * speed;
+        else
+            transform.position += (Vector3)(direction * speed * Time.deltaTime);
+    }
+
+    public void Stop()
+    {
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
     }
 
     public virtual void TakeDamage(int amount)
@@ -35,9 +59,7 @@ public abstract class EnemyBase : MonoBehaviour
         currentHealth -= amount;
 
         if (currentHealth <= 0)
-        {
             Die();
-        }
     }
 
     protected virtual void Die()
@@ -50,9 +72,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (player == null)
             return float.MaxValue;
 
-        return Vector2.Distance(
-            transform.position,
-            player.position);
+        return Vector2.Distance(transform.position, player.position);
     }
 
     public Vector2 DirectionToPlayer()
@@ -60,8 +80,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (player == null)
             return Vector2.zero;
 
-        return (player.position - transform.position)
-            .normalized;
+        return (player.position - transform.position).normalized;
     }
 
     public Vector2 DirectionAwayFromPlayer()
@@ -69,7 +88,6 @@ public abstract class EnemyBase : MonoBehaviour
         if (player == null)
             return Vector2.zero;
 
-        return (transform.position - player.position)
-            .normalized;
+        return (transform.position - player.position).normalized;
     }
 }

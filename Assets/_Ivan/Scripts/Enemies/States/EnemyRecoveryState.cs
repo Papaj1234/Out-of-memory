@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyRecoveryState : IEnemyState
 {
     private MeleeEnemyBrain enemy;
-
     private float timer;
 
     public EnemyRecoveryState(MeleeEnemyBrain enemy)
@@ -14,12 +13,13 @@ public class EnemyRecoveryState : IEnemyState
     public void Enter()
     {
         timer = enemy.AttackCooldown;
-
-        Debug.Log("ENTER RECOVERY");
+        enemy.Stop();
     }
 
     public void Update()
     {
+        enemy.Stop();
+
         if (enemy.HealthPercent <= 0.2f)
         {
             enemy.EnterFleeMode();
@@ -28,15 +28,9 @@ public class EnemyRecoveryState : IEnemyState
 
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
-        {
-            enemy.ChangeState(
-                enemy.ChaseState);
-        }
+        if (timer <= 0f)
+            enemy.ChangeState(enemy.ChaseState);
     }
 
-    public void Exit()
-    {
-        Debug.Log("EXIT RECOVERY");
-    }
+    public void Exit() { }
 }

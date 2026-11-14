@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MeleeEnemyBrain : CombatEnemyBase
 {
@@ -61,19 +62,22 @@ public class MeleeEnemyBrain : CombatEnemyBase
             return;
 
         isFleeing = true;
-
         ChangeState(fleeState);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) => HandleContact(collision);
+    private void OnCollisionStay2D(Collision2D collision) => HandleContact(collision);
+
+    // Касание героя бьёт всегда (как в Isaac), неуязвимость героя не даёт бить каждый кадр
+    private void HandleContact(Collision2D collision)
     {
-        if (hasHitPlayer)
+        if (!TryDamagePlayer(collision.gameObject))
             return;
 
-        if (collision.gameObject.CompareTag("Player"))
+        // попал рывком — уходим на восстановление
+        if (!hasHitPlayer && stateMachine.CurrentState == attackState)
         {
             hasHitPlayer = true;
-
             ChangeState(recoveryState);
         }
     }
@@ -82,14 +86,12 @@ public class MeleeEnemyBrain : CombatEnemyBase
     {
         base.Update();
 
-        #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.K))
+#if UNITY_EDITOR
+        if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame)
         {
             TakeDamage(10);
-
-            Debug.Log(
-                $"HP: {HealthPercent:P0}");
+            Debug.Log($"HP: {HealthPercent:P0}");
         }
-        #endif
+#endif
     }
 }
