@@ -13,7 +13,13 @@ namespace Assets._Herman.Scripts.Rooms
         [Header("Tile variants")]
         public List<TileVariant> floorVariants = new List<TileVariant>();
         public List<TileVariant> rockVariants = new List<TileVariant>();
+
+        [Tooltip("Середина ямы (над ней тоже яма) — темнота")]
         public List<TileVariant> pitVariants = new List<TileVariant>();
+
+        [Tooltip("Верхний край ямы (над ней пол/стена) — градиент сверху вниз")]
+        public List<TileVariant> pitEdgeVariants = new List<TileVariant>();
+
         public List<TileVariant> wallVariants = new List<TileVariant>();
 
         [Header("Pits")]

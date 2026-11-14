@@ -32,12 +32,22 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     weight: 1
   pitVariants:
-  - sprite: {fileID: 7482667652216324306, guid: e0bbd300b1e030544ae2565df5596c4c, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 0}
+  - sprite: {fileID: 21300000, guid: f1e253435ece9804d96408e886adc38a, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    weight: 1
+  pitEdgeVariants:
+  - sprite: {fileID: 21300000, guid: e13a0f2d62964314a90a5425b31ceaa0, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    weight: 1
+  - sprite: {fileID: 21300000, guid: 8905957b92ee67848bd4e8aabbedeed3, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    weight: 1
+  - sprite: {fileID: 21300000, guid: 13be4d49b901e9b44b419ab6db064f07, type: 3}
+    color: {r: 0.9607843, g: 1, b: 1, a: 1}
     weight: 1
   wallVariants:
   - sprite: {fileID: 7482667652216324306, guid: e0bbd300b1e030544ae2565df5596c4c, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0}
     weight: 1
   pitPatterns:
   - {fileID: 11400000, guid: 9f836b42eda40324a8c58ed6fa8f64e3, type: 2}
@@ -53,4 +63,6 @@ MonoBehaviour:
   rockPatternCount: {x: 1, y: 3}
   doorClearance: 2
   centerClearance: {x: 1, y: 1}
+  doorsStartOpen: 0
+  doorPrefabOverride: {fileID: 0}
   features: []

@@ -18,7 +18,7 @@ namespace Assets._Herman.Scripts.Rooms
         public bool IsCleared { get; private set; }
 
         private readonly List<Door> doors = new List<Door>();
-        private TileSet floorSet, rockSet, pitSet, wallSet;
+        private TileSet floorSet, rockSet, pitSet, pitEdgeSet, wallSet;
         private RoomType tilesCreatedFor;
 
         private class TileSet
@@ -61,6 +61,7 @@ namespace Assets._Herman.Scripts.Rooms
                 rockSet = MakeSet(type.rockVariants);
                 pitSet = MakeSet(type.pitVariants);
                 wallSet = MakeSet(type.wallVariants);
+                pitEdgeSet = MakeSet(type.pitEdgeVariants);
                 tilesCreatedFor = type;
             }
 
@@ -205,13 +206,24 @@ namespace Assets._Herman.Scripts.Rooms
                             blockMap.SetTile(pos, rockSet.Pick(roll));
                             break;
                         case Cell.Pit:
-                            blockMap.SetTile(pos, pitSet.Pick(roll));
+                            blockMap.SetTile(pos, PickPit(x, y, roll));
                             break;
                     }
                 }
             }
 
             DrawWalls();
+        }
+
+        // Верхний край ямы — градиент, всё что ниже — темнота
+        private Tile PickPit(int x, int y, float roll)
+        {
+            bool pitAbove = Layout.InBounds(x, y + 1) && Layout[x, y + 1] == Cell.Pit;
+
+            if (!pitAbove && pitEdgeSet.tiles.Length > 0)
+                return pitEdgeSet.Pick(roll);
+
+            return pitSet.Pick(roll);
         }
 
         private void DrawWalls()
