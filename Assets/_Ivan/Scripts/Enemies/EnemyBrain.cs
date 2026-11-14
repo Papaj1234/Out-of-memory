@@ -5,14 +5,21 @@ public class EnemyBrain : EnemyBase
     private EnemyStateMachine stateMachine;
 
     private EnemyChaseState chaseState;
+    private EnemyWindupState windupState;
     private EnemyAttackState attackState;
     private EnemyRecoveryState recoveryState;
+    private EnemyFleeState fleeState;
 
     private bool hasHitPlayer;
+    private bool isFleeing;
 
     public EnemyChaseState ChaseState => chaseState;
+    public EnemyWindupState WindupState => windupState;
     public EnemyAttackState AttackState => attackState;
     public EnemyRecoveryState RecoveryState => recoveryState;
+    public EnemyFleeState FleeState => fleeState;
+
+    public bool IsFleeing => isFleeing;
 
     protected override void Start()
     {
@@ -21,8 +28,10 @@ public class EnemyBrain : EnemyBase
         stateMachine = new EnemyStateMachine();
 
         chaseState = new EnemyChaseState(this);
+        windupState = new EnemyWindupState(this);
         attackState = new EnemyAttackState(this);
         recoveryState = new EnemyRecoveryState(this);
+        fleeState = new EnemyFleeState(this);
 
         stateMachine.ChangeState(chaseState);
     }
@@ -30,6 +39,11 @@ public class EnemyBrain : EnemyBase
     private void Update()
     {
         stateMachine.Update();
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(10);
+        }
     }
 
     public void ChangeState(IEnemyState state)
@@ -42,6 +56,16 @@ public class EnemyBrain : EnemyBase
         hasHitPlayer = false;
     }
 
+    public void EnterFleeMode()
+    {
+        if (isFleeing)
+            return;
+
+        isFleeing = true;
+
+        ChangeState(fleeState);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (hasHitPlayer)
@@ -50,8 +74,6 @@ public class EnemyBrain : EnemyBase
         if (collision.gameObject.CompareTag("Player"))
         {
             hasHitPlayer = true;
-
-            Debug.Log("PLAYER HIT");
 
             ChangeState(recoveryState);
         }

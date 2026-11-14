@@ -7,9 +7,13 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Header("Attack")]
     [SerializeField] protected float attackRange = 1.5f;
+
+    [SerializeField] protected float windupDuration = 0.4f;
+
     [SerializeField] protected float dashSpeed = 8f;
     [SerializeField] protected float dashDistance = 2f;
     [SerializeField] protected float attackCooldown = 1f;
+
     [SerializeField] protected int damage = 10;
 
     [Header("Health")]
@@ -20,6 +24,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public float MoveSpeed => moveSpeed;
     public float AttackRange => attackRange;
+    public float WindupDuration => windupDuration;
     public float DashSpeed => dashSpeed;
     public float DashDistance => dashDistance;
     public float AttackCooldown => attackCooldown;

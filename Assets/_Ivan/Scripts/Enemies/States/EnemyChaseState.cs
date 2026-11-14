@@ -19,9 +19,17 @@ public class EnemyChaseState : IEnemyState
         if (enemy.Player == null)
             return;
 
+        if (enemy.HealthPercent <= 0.2f)
+        {
+            enemy.EnterFleeMode();
+            return;
+        }
+
         if (enemy.IsPlayerInAttackRange())
         {
-            enemy.ChangeState(enemy.AttackState);
+            enemy.ChangeState(
+                enemy.WindupState);
+
             return;
         }
 
@@ -29,9 +37,10 @@ public class EnemyChaseState : IEnemyState
             enemy.DirectionToPlayer();
 
         enemy.transform.position +=
-            (Vector3)(direction *
-                      enemy.MoveSpeed *
-                      Time.deltaTime);
+            (Vector3)(
+                direction *
+                enemy.MoveSpeed *
+                Time.deltaTime);
     }
 
     public void Exit()

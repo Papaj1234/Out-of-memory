@@ -20,11 +20,18 @@ public class EnemyRecoveryState : IEnemyState
 
     public void Update()
     {
+        if (enemy.HealthPercent <= 0.2f)
+        {
+            enemy.EnterFleeMode();
+            return;
+        }
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)
         {
-            enemy.ChangeState(enemy.ChaseState);
+            enemy.ChangeState(
+                enemy.ChaseState);
         }
     }
 
