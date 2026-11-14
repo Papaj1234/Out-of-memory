@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3123811067201682503
 Transform:
   m_ObjectHideFlags: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxHealth: 100
   damage: 10
+  damageToPlayer: 1
   attackRange: 1.5
   windupDuration: 0.4
   dashSpeed: 8

@@ -74,6 +74,8 @@ public class MeleeEnemyBrain : CombatEnemyBase
         if (!TryDamagePlayer(collision.gameObject))
             return;
 
+        Debug.Log($"[Melee] {name} ударил героя на {DamageToPlayer} (состояние: {stateMachine.CurrentState?.GetType().Name})", this);
+
         // попал рывком — уходим на восстановление
         if (!hasHitPlayer && stateMachine.CurrentState == attackState)
         {
