@@ -172,13 +172,23 @@ namespace Assets._Herman.Scripts.Rooms
         }
 
         // Свободный пол, не у дверей и не в защищённых зонах
+        // Свободный пол для спавна: всё, кроме ям/камней и зоны у дверей
         public List<Vector2Int> GetFreeCells()
         {
+            // клетки перед дверями — там появляется герой, мобов туда не ставим
+            var doorZone = new HashSet<Vector2Int>();
+            foreach (var (cell, inward) in Layout.GetDoors())
+                for (int i = 0; i < Type.doorClearance; i++)
+                    doorZone.Add(cell + inward * i);
+
             var result = new List<Vector2Int>();
             for (int x = 0; x < Layout.width; x++)
                 for (int y = 0; y < Layout.height; y++)
-                    if (Layout[x, y] == Cell.Floor && !Layout.protectedCells[x, y])
-                        result.Add(new Vector2Int(x, y));
+                {
+                    var c = new Vector2Int(x, y);
+                    if (Layout[x, y] == Cell.Floor && !doorZone.Contains(c))
+                        result.Add(c);
+                }
             return result;
         }
 

@@ -46,6 +46,8 @@ MonoBehaviour:
   rockPatternCount: {x: 1, y: 3}
   doorClearance: 2
   centerClearance: {x: 1, y: 1}
-  doorsStartOpen: 0
   doorPrefabOverride: {fileID: 0}
-  features: []
+  enemyPrefabs: []
+  enemyCount: {x: 2, y: 4}
+  features:
+  - {fileID: 11400000, guid: fa0fd645842e89144ac2eee5822eb3e3, type: 2}

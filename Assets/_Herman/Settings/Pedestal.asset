@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eea04b65a4d9b48b36311f1e698a98, type: 3}
   m_Name: Pedestal
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Rooms.SpawnPrefabFeature
-  prefab: {fileID: 0}
+  prefab: {fileID: 7557368593912100191, guid: 6a979fd57a03ba449b2fd9c8bcd638ce, type: 3}
   offsetFromCenter: {x: 0, y: 0}
