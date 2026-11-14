@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField, Min(0f)] private float damage = 10f;
     [SerializeField, Min(0.1f)] private float projectileSpeed = 10f;
     [SerializeField, Min(0.01f)] private float projectileRadius = 0.15f;
+    [SerializeField, Min(0.5f)] private float maxHealth = 3f;
     
     public float AttackRange => attackRange;
     public float AttackAngle => attackAngle;
@@ -19,4 +20,5 @@ public class PlayerStats : MonoBehaviour
     public float Damage => damage;
     public float ProjectileSpeed => projectileSpeed;
     public float ProjectileRadius => projectileRadius;
+    public float MaxHealth => maxHealth;
 }

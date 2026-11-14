@@ -10,6 +10,8 @@ public class RangedAttack : AttackBase
     [Tooltip("Слои стен и препятствий")]
     [SerializeField] private LayerMask obstacleLayers;
 
+    [SerializeField, Min(0f)] private float rangeMultiplier = 4f;
+
     // Выстрел происходит сразу.
     // Перезарядку проверяет AttackBase.
     protected override bool IsAttacking => false;
@@ -39,7 +41,7 @@ public class RangedAttack : AttackBase
             Stats.transform,
             direction,
             Stats.Damage,
-            Stats.AttackRange,
+            Stats.AttackRange * rangeMultiplier,
             Stats.ProjectileSpeed,
             Stats.ProjectileRadius,
             targetLayers,
