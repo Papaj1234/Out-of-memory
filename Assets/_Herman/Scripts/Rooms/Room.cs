@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,7 +14,7 @@ namespace Assets._Herman.Scripts.Rooms
         public RoomLayout Layout { get; private set; }
         public Transform ContentRoot => contentRoot;
 
-        private TileSet floorSet, rockSet, pitSet;
+        private TileSet floorSet, rockSet, pitSet, wallSet;
         private RoomType tilesCreatedFor;
 
         private class TileSet
@@ -57,6 +56,7 @@ namespace Assets._Herman.Scripts.Rooms
                 floorSet = MakeSet(type.floorVariants);
                 rockSet = MakeSet(type.rockVariants);
                 pitSet = MakeSet(type.pitVariants);
+                wallSet = MakeSet(type.wallVariants);
                 tilesCreatedFor = type;
             }
 
@@ -92,9 +92,6 @@ namespace Assets._Herman.Scripts.Rooms
                 set.weights[i] = variants[i].weight;
                 set.totalWeight += variants[i].weight;
             }
-
-            if (variants.Count == 0)
-                Debug.LogWarning($"[{name}] пустой список вариантов текстур");
 
             return set;
         }
@@ -132,7 +129,43 @@ namespace Assets._Herman.Scripts.Rooms
                     }
                 }
             }
+
+            DrawWalls();
         }
+
+        private void DrawWalls()
+        {
+            // проёмы — клетки стены прямо за клеткой двери
+            var gaps = new HashSet<Vector2Int>();
+            foreach (var (cell, inward) in Layout.GetDoors())
+                gaps.Add(cell - inward);
+
+            for (int x = -1; x <= Layout.width; x++)
+            {
+                for (int y = -1; y <= Layout.height; y++)
+                {
+                    bool isEdge = x == -1 || y == -1 || x == Layout.width || y == Layout.height;
+                    if (!isEdge) continue;
+
+                    var pos = ToTilePos(x, y);
+
+                    if (gaps.Contains(new Vector2Int(x, y)))
+                        floorMap.SetTile(pos, floorSet.Pick(0.5f));      // проход
+                    else
+                        blockMap.SetTile(pos, wallSet.Pick(Hash01(x, y))); // стена
+                }
+            }
+        }
+
+        private static float Hash01(int x, int y)
+        {
+            unchecked
+            {
+                int h = x * 73856093 ^ y * 19349663;
+                return (h & 0x7fffffff) % 1000 / 1000f;
+            }
+        }
+
         private void OnDrawGizmos()
         {
             if (Layout == null) return;

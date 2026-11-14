@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets._Herman.Scripts.Rooms
@@ -16,6 +14,7 @@ namespace Assets._Herman.Scripts.Rooms
         public List<TileVariant> floorVariants = new List<TileVariant>();
         public List<TileVariant> rockVariants = new List<TileVariant>();
         public List<TileVariant> pitVariants = new List<TileVariant>();
+        public List<TileVariant> wallVariants = new List<TileVariant>();
 
         [Header("Pits")]
         public List<ObstaclePattern> pitPatterns = new List<ObstaclePattern>();
@@ -30,7 +29,7 @@ namespace Assets._Herman.Scripts.Rooms
         [Tooltip("Сколько клеток перед дверью всегда свободны")]
         [Min(1)] public int doorClearance = 2;
 
-        [Tooltip("Радиус свободной зоны в центре: 0 = только центральная клетка, 1 = квадрат 3x3")]
+        [Tooltip("Радиус свободной зоны в центре: 0 = только центральная клетка, 1 = квадрат 3x3, -1 = выкл")]
         public Vector2Int centerClearance = new Vector2Int(1, 1);
 
         [Header("Features")]
