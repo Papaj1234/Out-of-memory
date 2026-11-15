@@ -33,7 +33,7 @@ public class ShooterApproachState : IEnemyState
             return;
         }
 
-        enemy.Move(enemy.DirectionToPlayer(), enemy.MoveSpeed);
+        enemy.Move(enemy.PathToPlayer(), enemy.MoveSpeed);
     }
 
     public void Exit() { }

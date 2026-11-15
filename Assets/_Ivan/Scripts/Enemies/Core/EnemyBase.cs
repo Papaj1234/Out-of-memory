@@ -12,7 +12,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     protected float currentHealth;
     protected Transform player;
     protected Rigidbody2D rb;
-    protected RoomEnemy roomEnemy;
+
+    private RoomEnemy roomMarker;
 
     public float MoveSpeed => moveSpeed;
     public Transform Player => player;
@@ -21,30 +22,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     public float HealthPercent =>
         maxHealth > 0f ? currentHealth / maxHealth : 0f;
 
-    protected Room CurrentRoom =>
-        roomEnemy != null
-            ? roomEnemy.Room
-            : null;
-
-    protected RoomLayout CurrentLayout =>
-        CurrentRoom != null
-            ? CurrentRoom.Layout
-            : null;
-
-    protected bool HasRoomLayout =>
-        CurrentLayout != null;
-
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
         if (rb != null)
         {
             rb.gravityScale = 0f;
             rb.freezeRotation = true;
         }
-
-        roomEnemy = GetComponent<RoomEnemy>();
 
         currentHealth = maxHealth;
     }
@@ -58,19 +43,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
             player = playerObject.transform;
     }
 
+    // Движение через физику — упирается в стены, камни, ямы
     public void Move(Vector2 direction, float speed)
     {
         if (rb != null)
-        {
             rb.linearVelocity = direction * speed;
-        }
         else
-        {
-            transform.position +=
-                (Vector3)(direction *
-                          speed *
-                          Time.deltaTime);
-        }
+            transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
 
     public void Stop()
@@ -79,19 +58,14 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
             rb.linearVelocity = Vector2.zero;
     }
 
+    // Урон от атак героя (IDamageable)
     public virtual void TakeDamage(float damage)
     {
         if (IsDead || damage <= 0f)
             return;
 
-        currentHealth =
-            Mathf.Max(
-                0f,
-                currentHealth - damage);
-
-        Debug.Log(
-            $"[Enemy] {name} получил {damage}, HP {currentHealth}/{maxHealth}",
-            this);
+        currentHealth = Mathf.Max(0f, currentHealth - damage);
+        Debug.Log($"[Enemy] {name} получил {damage}, HP {currentHealth}/{maxHealth}", this);
 
         if (IsDead)
             Die();
@@ -99,7 +73,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); // комната узнает об этом сама (RoomEnemy)
     }
 
     public float DistanceToPlayer()
@@ -107,9 +81,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
         if (player == null)
             return float.MaxValue;
 
-        return Vector2.Distance(
-            transform.position,
-            player.position);
+        return Vector2.Distance(transform.position, player.position);
     }
 
     public Vector2 DirectionToPlayer()
@@ -117,8 +89,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
         if (player == null)
             return Vector2.zero;
 
-        return (player.position -
-                transform.position).normalized;
+        return (player.position - transform.position).normalized;
     }
 
     public Vector2 DirectionAwayFromPlayer()
@@ -126,153 +97,32 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
         if (player == null)
             return Vector2.zero;
 
-        return (transform.position -
-                player.position).normalized;
+        return (transform.position - player.position).normalized;
     }
 
-    protected Vector2Int GetClosestCell(Vector3 worldPosition)
+    // комната, в которой заспавнен моб (метку вешает Room при спавне)
+    protected Room CurrentRoom
     {
-        if (!HasRoomLayout)
-            return Vector2Int.zero;
-
-        Vector2Int closestCell =
-            Vector2Int.zero;
-
-        float bestDistance =
-            float.MaxValue;
-
-        for (int x = 0; x < CurrentLayout.width; x++)
+        get
         {
-            for (int y = 0; y < CurrentLayout.height; y++)
-            {
-                Vector3 cellWorld =
-                    CurrentRoom.CellToWorld(x, y);
-
-                float distance =
-                    Vector2.Distance(
-                        worldPosition,
-                        cellWorld);
-
-                if (distance < bestDistance)
-                {
-                    bestDistance = distance;
-                    closestCell =
-                        new Vector2Int(x, y);
-                }
-            }
+            if (roomMarker == null) roomMarker = GetComponent<RoomEnemy>();
+            return roomMarker != null ? roomMarker.Room : null;
         }
-
-        return closestCell;
     }
 
-    protected Vector2Int GetCurrentCell()
+    // К герою в обход ям и камней
+    public Vector2 PathToPlayer()
     {
-        return GetClosestCell(
-            transform.position);
+        var room = CurrentRoom;
+        if (room == null || player == null) return DirectionToPlayer();
+        return room.PathDirection(transform.position, player.position);
     }
 
-    protected Vector2Int GetPlayerCell()
+    // От героя, не упираясь в стены
+    public Vector2 PathAwayFromPlayer()
     {
-        if (player == null)
-            return Vector2Int.zero;
-
-        return GetClosestCell(
-            player.position);
-    }
-
-    public Vector2 GetPathDirectionToPlayer()
-    {
-        if (!HasRoomLayout)
-            return DirectionToPlayer();
-
-        Vector2Int startCell =
-            GetCurrentCell();
-
-        Vector2Int targetCell =
-            GetPlayerCell();
-
-        Vector2Int nextCell =
-            GridPathfinder.GetNextStep(
-                CurrentLayout,
-                startCell,
-                targetCell);
-
-        if (nextCell == startCell)
-            return Vector2.zero;
-
-        Vector3 targetWorld =
-            CurrentRoom.CellToWorld(
-                nextCell.x,
-                nextCell.y);
-
-        return ((Vector2)targetWorld -
-                (Vector2)transform.position)
-                .normalized;
-    }
-
-    public Vector2 GetPathDirectionAwayFromPlayer()
-    {
-        if (!HasRoomLayout)
-            return DirectionAwayFromPlayer();
-
-        Vector2Int startCell =
-            GetCurrentCell();
-
-        Vector2Int playerCell =
-            GetPlayerCell();
-
-        Vector2Int bestCell =
-            startCell;
-
-        float bestDistance =
-            Vector2Int.Distance(
-                startCell,
-                playerCell);
-
-        Vector2Int[] directions =
-        {
-        Vector2Int.up,
-        Vector2Int.right,
-        Vector2Int.down,
-        Vector2Int.left
-    };
-
-        foreach (var direction in directions)
-        {
-            Vector2Int candidate =
-                startCell + direction;
-
-            if (!CurrentLayout.InBounds(
-                    candidate.x,
-                    candidate.y))
-                continue;
-
-            if (CurrentLayout[candidate.x, candidate.y]
-                != Cell.Floor)
-                continue;
-
-            float distance =
-                Vector2Int.Distance(
-                    candidate,
-                    playerCell);
-
-            if (distance > bestDistance)
-            {
-                bestDistance = distance;
-                bestCell = candidate;
-            }
-        }
-
-        if (bestCell == startCell)
-            return Vector2.zero;
-
-        Vector3 targetWorld =
-            CurrentRoom.CellToWorld(
-                bestCell.x,
-                bestCell.y);
-
-        return ((Vector2)targetWorld -
-                (Vector2)transform.position)
-                .normalized;
+        var room = CurrentRoom;
+        if (room == null || player == null) return DirectionAwayFromPlayer();
+        return room.PathDirection(transform.position, player.position, away: true);
     }
 }

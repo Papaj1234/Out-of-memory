@@ -2,8 +2,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-//это пизда я уже перестал понимать что здесь происходит, но вроде как это комната, которая строится по типу и лэйауту и прочая канитель
 
+//это пиздец я перестал понимать как эта хуйня работает
 namespace Assets._Herman.Scripts.Rooms
 {
     public class Room : MonoBehaviour
@@ -20,6 +20,7 @@ namespace Assets._Herman.Scripts.Rooms
         public IReadOnlyList<Door> DoorList => doors;
         public bool IsCleared { get; private set; }
         public int AliveEnemies => aliveEnemies.Count;
+
         public Vector2Int GridPos { get; set; }
         public Assets._Herman.Scripts.Level.RoomRole Role { get; set; }
         public Vector3 CenterWorld => CellToWorld(Layout.width / 2, Layout.height / 2);
@@ -68,6 +69,7 @@ namespace Assets._Herman.Scripts.Rooms
         {
             Type = type;
             Layout = layout;
+            flow = null;
 
             if (tilesCreatedFor != type)
             {
@@ -141,6 +143,9 @@ namespace Assets._Herman.Scripts.Rooms
                 if (e != null) Destroy(e.gameObject);
         }
 
+        [ContextMenu("Enter Room (debug)")]
+        private void DebugEnter() => OnPlayerEnter();
+
         private void SetDoorsOpen(bool open)
         {
             foreach (var d in doors)
@@ -172,14 +177,13 @@ namespace Assets._Herman.Scripts.Rooms
                 var marker = enemy.AddComponent<RoomEnemy>();
                 marker.Init(this);
                 aliveEnemies.Add(marker);
+                enemy.SetActive(true);
             }
         }
 
-        // Свободный пол, не у дверей и не в защищённых зонах
         // Свободный пол для спавна: всё, кроме ям/камней и зоны у дверей
         public List<Vector2Int> GetFreeCells()
         {
-            // клетки перед дверями — там появляется герой, мобов туда не ставим
             var doorZone = new HashSet<Vector2Int>();
             foreach (var (cell, inward) in Layout.GetDoors())
                 for (int i = 0; i < Type.doorClearance; i++)
@@ -203,7 +207,7 @@ namespace Assets._Herman.Scripts.Rooms
             {
                 if (SideFromInward(inward) != side) continue;
 
-                var inside = cell + inward; // на клетку глубже, чтобы сразу сработал вход в комнату
+                var inside = cell + inward;
                 if (Layout.InBounds(inside.x, inside.y) && Layout[inside.x, inside.y] == Cell.Floor)
                     return CellToWorld(inside.x, inside.y);
 
@@ -219,8 +223,7 @@ namespace Assets._Herman.Scripts.Rooms
             var go = new GameObject("RoomTrigger");
             go.transform.SetParent(contentRoot, false);
 
-            // зона на 1 клетку меньше комнаты с каждой стороны,
-            // чтобы дверь закрывалась уже за спиной героя
+            // зона на 1 клетку меньше комнаты с каждой стороны
             Vector3 a = CellToWorld(1, 1);
             Vector3 b = CellToWorld(Layout.width - 2, Layout.height - 2);
             go.transform.position = (a + b) / 2f;
@@ -275,6 +278,107 @@ namespace Assets._Herman.Scripts.Rooms
             }
         }
 
+        // ===== Поиск пути для мобов =====
+
+        private int[,] flow;                       // расстояние (в шагах) от каждой клетки до цели
+        private Vector2Int flowTarget = new Vector2Int(int.MinValue, int.MinValue);
+
+        private static readonly Vector2Int[] Neighbours8 =
+        {
+            new Vector2Int( 1, 0), new Vector2Int(-1, 0), new Vector2Int(0,  1), new Vector2Int( 0, -1),
+            new Vector2Int( 1, 1), new Vector2Int( 1,-1), new Vector2Int(-1, 1), new Vector2Int(-1, -1)
+        };
+
+        public Vector2Int WorldToCell(Vector3 world)
+        {
+            var t = floorMap.WorldToCell(world);
+            return new Vector2Int(t.x + Layout.width / 2, t.y + Layout.height / 2);
+        }
+
+        public bool IsWalkable(Vector2Int c) =>
+            Layout.InBounds(c.x, c.y) && Layout[c.x, c.y] == Cell.Floor;
+
+        // шаг возможен, если клетка свободна, а по диагонали — ещё и не срезаем угол
+        private bool CanStep(Vector2Int from, Vector2Int d)
+        {
+            var next = from + d;
+            if (!IsWalkable(next)) return false;
+            if (d.x == 0 || d.y == 0) return true;
+            return IsWalkable(from + new Vector2Int(d.x, 0)) && IsWalkable(from + new Vector2Int(0, d.y));
+        }
+
+        private void UpdateFlow(Vector2Int target)
+        {
+            if (flow != null && target == flowTarget) return;
+
+            flowTarget = target;
+            if (flow == null || flow.GetLength(0) != Layout.width || flow.GetLength(1) != Layout.height)
+                flow = new int[Layout.width, Layout.height];
+
+            for (int x = 0; x < Layout.width; x++)
+                for (int y = 0; y < Layout.height; y++)
+                    flow[x, y] = -1;
+
+            var queue = new Queue<Vector2Int>();
+            flow[target.x, target.y] = 0;
+            queue.Enqueue(target);
+
+            while (queue.Count > 0)
+            {
+                var c = queue.Dequeue();
+                foreach (var d in Neighbours8)
+                {
+                    var n = c + d;
+                    if (!Layout.InBounds(n.x, n.y) || flow[n.x, n.y] >= 0) continue;
+                    if (!CanStep(c, d)) continue;
+
+                    flow[n.x, n.y] = flow[c.x, c.y] + 1;
+                    queue.Enqueue(n);
+                }
+            }
+        }
+
+        // Куда идти, чтобы дойти до цели (away = true — чтобы уйти от неё), обходя ямы и камни
+        public Vector2 PathDirection(Vector3 from, Vector3 target, bool away = false)
+        {
+            Vector2 straight = ((Vector2)(away ? from - target : target - from)).normalized;
+            if (Layout == null) return straight;
+
+            var fc = WorldToCell(from);
+            var tc = WorldToCell(target);
+            tc.x = Mathf.Clamp(tc.x, 0, Layout.width - 1);
+            tc.y = Mathf.Clamp(tc.y, 0, Layout.height - 1);
+
+            if (!Layout.InBounds(fc.x, fc.y)) return straight;
+
+            UpdateFlow(tc);
+
+            int current = flow[fc.x, fc.y];
+            if (current < 0) return straight;               // нет пути — как раньше
+            if (!away && fc == tc) return straight;          // уже в клетке героя — прямо к нему
+
+            var best = fc;
+            int bestValue = current;
+
+            foreach (var d in Neighbours8)
+            {
+                if (!CanStep(fc, d)) continue;
+                var n = fc + d;
+                int v = flow[n.x, n.y];
+                if (v < 0) continue;
+
+                if (away ? v > bestValue : v < bestValue)
+                {
+                    bestValue = v;
+                    best = n;
+                }
+            }
+
+            if (best == fc) return away ? Vector2.zero : straight; // загнан в угол — стоит
+
+            return ((Vector2)(CellToWorld(best.x, best.y) - from)).normalized;
+        }
+
         // ===== Отрисовка =====
 
         public Vector3 CellToWorld(int x, int y) => floorMap.GetCellCenterWorld(ToTilePos(x, y));
@@ -317,6 +421,7 @@ namespace Assets._Herman.Scripts.Rooms
         {
             floorMap.ClearAllTiles();
             blockMap.ClearAllTiles();
+            if (pitMap != null) pitMap.ClearAllTiles();
 
             for (int x = 0; x < Layout.width; x++)
             {
@@ -344,6 +449,7 @@ namespace Assets._Herman.Scripts.Rooms
             DrawWalls();
         }
 
+        // Верхний край ямы — градиент, всё что ниже — темнота
         private Tile PickPit(int x, int y, float roll)
         {
             bool pitAbove = Layout.InBounds(x, y + 1) && Layout[x, y + 1] == Cell.Pit;
@@ -356,6 +462,7 @@ namespace Assets._Herman.Scripts.Rooms
 
         private void DrawWalls()
         {
+            // проёмы — клетки стены прямо за клеткой двери
             var gaps = new HashSet<Vector2Int>();
             foreach (var (cell, inward) in Layout.GetDoors())
                 gaps.Add(cell - inward);
@@ -370,9 +477,9 @@ namespace Assets._Herman.Scripts.Rooms
                     var pos = ToTilePos(x, y);
 
                     if (gaps.Contains(new Vector2Int(x, y)))
-                        floorMap.SetTile(pos, floorSet.Pick(0.5f));
+                        floorMap.SetTile(pos, floorSet.Pick(0.5f));        // проход
                     else
-                        blockMap.SetTile(pos, wallSet.Pick(Hash01(x, y)));
+                        blockMap.SetTile(pos, wallSet.Pick(Hash01(x, y))); // стена
                 }
             }
         }

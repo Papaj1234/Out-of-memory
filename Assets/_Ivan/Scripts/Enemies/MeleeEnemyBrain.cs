@@ -74,8 +74,6 @@ public class MeleeEnemyBrain : CombatEnemyBase
         if (!TryDamagePlayer(collision.gameObject))
             return;
 
-        Debug.Log($"[Melee] {name} ударил героя на {DamageToPlayer} (состояние: {stateMachine.CurrentState?.GetType().Name})", this);
-
         // попал рывком — уходим на восстановление
         if (!hasHitPlayer && stateMachine.CurrentState == attackState)
         {
@@ -95,10 +93,5 @@ public class MeleeEnemyBrain : CombatEnemyBase
             Debug.Log($"HP: {HealthPercent:P0}");
         }
 #endif
-    }
-
-    public void TakeDamage(float damage)
-    {
-        throw new System.NotImplementedException();
     }
 }
