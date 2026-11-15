@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected float speed = 5f;
     [SerializeField] protected float lifeTime = 5f;
 
     protected Vector2 direction;

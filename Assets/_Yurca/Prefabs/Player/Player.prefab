@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   animator: {fileID: 8964271219425268170}
+  spriteRenderer: {fileID: 3223336707976795254}
+  faceCameraDelay: 0
 --- !u!1 &1617528509055686745
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,8 +336,8 @@ Transform:
   m_GameObject: {fileID: 1796687444103755385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8887348564894535683}

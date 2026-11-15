@@ -4,56 +4,81 @@ public class ShooterShootState : IEnemyState
 {
     private ShooterEnemyBrain enemy;
 
-    public ShooterShootState(ShooterEnemyBrain enemy)
+    private float approachTimer;
+    private float retreatTimer;
+
+    public ShooterShootState(
+        ShooterEnemyBrain enemy)
     {
         this.enemy = enemy;
     }
 
     public void Enter()
     {
-        enemy.Stop();
+        approachTimer = 0f;
+        retreatTimer = 0f;
+
+        Debug.Log("ENTER SHOOT");
     }
 
     public void Update()
     {
-        enemy.Stop();
-
-        if (enemy.Player == null)
-            return;
-
-        float distance = enemy.DistanceToPlayer();
+        float distance =
+            enemy.DistanceToPlayer();
 
         if (distance > enemy.MaxDistance)
         {
-            enemy.ChangeState(enemy.ApproachState);
+            approachTimer += Time.deltaTime;
+
+            if (approachTimer >= enemy.StateChangeDelay)
+            {
+                enemy.ChangeState(
+                    enemy.ApproachState);
+            }
+
             return;
         }
 
+        approachTimer = 0f;
+
         if (distance < enemy.MinDistance)
         {
-            enemy.ChangeState(enemy.RetreatState);
+            retreatTimer += Time.deltaTime;
+
+            if (retreatTimer >= enemy.StateChangeDelay)
+            {
+                enemy.ChangeState(
+                    enemy.RetreatState);
+            }
+
             return;
         }
+
+        retreatTimer = 0f;
 
         if (enemy.CanShoot)
         {
             Shoot();
+
             enemy.ResetShootCooldown();
         }
     }
 
     private void Shoot()
     {
-        if (enemy.ProjectilePrefab == null || enemy.FirePoint == null)
-            return;
+        Vector2 direction =
+            enemy.DirectionToPlayer();
 
-        EnemyProjectile projectile = Object.Instantiate(
-            enemy.ProjectilePrefab,
-            enemy.FirePoint.position,
-            Quaternion.identity);
+        EnemyProjectile projectile =
+            Object.Instantiate(
+                enemy.ProjectilePrefab,
+                enemy.FirePoint.position,
+                Quaternion.identity);
 
-        projectile.Initialize(enemy.DirectionToPlayer());
+        projectile.Initialize(direction);
     }
 
-    public void Exit() { }
+    public void Exit()
+    {
+    }
 }
