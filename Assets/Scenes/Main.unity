@@ -1198,7 +1198,7 @@ PrefabInstance:
     - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: startingAttack
       value: 
-      objectReference: {fileID: 839069621556478906, guid: b8e645f723d60114989c69f9107879c5, type: 3}
+      objectReference: {fileID: 3369587731505037368, guid: e6ecf339b6afd6f40a8c2c34b6e8dac6, type: 3}
     - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
