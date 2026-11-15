@@ -50,4 +50,5 @@ MonoBehaviour:
   hitDelay: 0.25
   multiplier: 1
   slashEffectPrefab: {fileID: 538980896257537574, guid: e209d030d1bc4514ca717dce0c582653, type: 3}
-  rangeMultiplier: 1
+  rangeMultiplier: 1.5
+  slashLifetime: 0.2

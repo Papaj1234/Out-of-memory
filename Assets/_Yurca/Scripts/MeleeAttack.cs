@@ -17,6 +17,7 @@ public class MeleeAttack : AttackBase
     [SerializeField] private GameObject slashEffectPrefab;
 
     [SerializeField, Min(0f)] private float rangeMultiplier = 1f;
+    [SerializeField, Min(0.01f)] private float slashLifetime = 0.2f;
 
     // Исходный угол изображения эффекта.
     private const float EffectBaseAngle = 30f;
@@ -49,7 +50,6 @@ public class MeleeAttack : AttackBase
             Mathf.Max(0f, duration - delay)
         );
 
-        ClearEffect();
         attackRoutine = null;
     }
 
@@ -85,6 +85,7 @@ public class MeleeAttack : AttackBase
             range * widthMultiplier,
             1f
         );
+        Destroy(activeEffect, slashLifetime);
     }
 
     private void DealDamage(

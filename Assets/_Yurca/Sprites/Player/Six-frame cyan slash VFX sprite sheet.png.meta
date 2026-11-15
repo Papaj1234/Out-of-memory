@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: d96c6ca8541079d4b90a17688feb6fac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3519500778103835018
+    second: Six-frame cyan slash VFX sprite sheet_0
+  - first:
+      213: 7280147334700364400
+    second: Six-frame cyan slash VFX sprite sheet_1
+  - first:
+      213: -7740470000453457236
+    second: Six-frame cyan slash VFX sprite sheet_2
+  - first:
+      213: 1143143991324404573
+    second: Six-frame cyan slash VFX sprite sheet_3
+  - first:
+      213: 3595370562930764207
+    second: Six-frame cyan slash VFX sprite sheet_4
+  - first:
+      213: 2872936088950399344
+    second: Six-frame cyan slash VFX sprite sheet_5
+  - first:
+      213: 9159837936966984498
+    second: Six-frame cyan slash VFX sprite sheet_6
+  - first:
+      213: -6127934259762624139
+    second: Six-frame cyan slash VFX sprite sheet_7
+  - first:
+      213: 483981433089183863
+    second: Six-frame cyan slash VFX sprite sheet_8
+  - first:
+      213: 2892154258131542773
+    second: Six-frame cyan slash VFX sprite sheet_9
+  - first:
+      213: -4258080410576763282
+    second: Six-frame cyan slash VFX sprite sheet_10
+  - first:
+      213: 2649499996117422648
+    second: Six-frame cyan slash VFX sprite sheet_11
+  - first:
+      213: -520459232679612090
+    second: Six-frame cyan slash VFX sprite sheet_12
+  - first:
+      213: -4338281961275000810
+    second: Six-frame cyan slash VFX sprite sheet_13
+  - first:
+      213: -4587998169188891176
+    second: Six-frame cyan slash VFX sprite sheet_14
+  - first:
+      213: 6034439624900238569
+    second: Six-frame cyan slash VFX sprite sheet_15
+  - first:
+      213: 1471942359081430295
+    second: Six-frame cyan slash VFX sprite sheet_16
+  - first:
+      213: 4484884280001738432
+    second: Six-frame cyan slash VFX sprite sheet_17
+  - first:
+      213: -33367550365666
+    second: Six-frame cyan slash VFX sprite sheet_18
+  - first:
+      213: 5748488209207267042
+    second: Six-frame cyan slash VFX sprite sheet_19
+  - first:
+      213: 6522610953859839769
+    second: Six-frame cyan slash VFX sprite sheet_20
+  - first:
+      213: -6516976405753389802
+    second: Six-frame cyan slash VFX sprite sheet_21
+  - first:
+      213: 6464324162150104937
+    second: Six-frame cyan slash VFX sprite sheet_22
+  - first:
+      213: -631915996219929115
+    second: Six-frame cyan slash VFX sprite sheet_23
+  - first:
+      213: -2619348399086485598
+    second: Six-frame cyan slash VFX sprite sheet_24
+  - first:
+      213: -3128687073782470129
+    second: Six-frame cyan slash VFX sprite sheet_25
+  - first:
+      213: 8187808951575992569
+    second: Six-frame cyan slash VFX sprite sheet_26
+  - first:
+      213: -8015082216431880823
+    second: Six-frame cyan slash VFX sprite sheet_27
+  - first:
+      213: 213264820599552944
+    second: Six-frame cyan slash VFX sprite sheet_28
+  - first:
+      213: 2396317633208598133
+    second: Six-frame cyan slash VFX sprite sheet_29
+  - first:
+      213: -4080570743561953407
+    second: Six-frame cyan slash VFX sprite sheet_30
+  - first:
+      213: -793843499812441842
+    second: Six-frame cyan slash VFX sprite sheet_31
+  - first:
+      213: -7538707330778692506
+    second: Six-frame cyan slash VFX sprite sheet_32
+  - first:
+      213: 7799205160485468844
+    second: Six-frame cyan slash VFX sprite sheet_33
+  - first:
+      213: -2724504402682517394
+    second: Six-frame cyan slash VFX sprite sheet_34
+  - first:
+      213: 2829078895583300545
+    second: Six-frame cyan slash VFX sprite sheet_35
+  - first:
+      213: -8448769694068240112
+    second: Six-frame cyan slash VFX sprite sheet_36
+  - first:
+      213: -5468166867319957593
+    second: Six-frame cyan slash VFX sprite sheet_37
+  - first:
+      213: 8142208268343322974
+    second: Six-frame cyan slash VFX sprite sheet_38
+  - first:
+      213: 8102927355465977925
+    second: Six-frame cyan slash VFX sprite sheet_39
+  - first:
+      213: 1049544530272533390
+    second: Six-frame cyan slash VFX sprite sheet_40
+  - first:
+      213: 3185298217688294947
+    second: Six-frame cyan slash VFX sprite sheet_41
+  - first:
+      213: 8837237196888812091
+    second: Six-frame cyan slash VFX sprite sheet_42
+  - first:
+      213: -1267641750223050065
+    second: Six-frame cyan slash VFX sprite sheet_43
+  - first:
+      213: -848762616457405800
+    second: Six-frame cyan slash VFX sprite sheet_44
+  - first:
+      213: -4437417751074016575
+    second: Six-frame cyan slash VFX sprite sheet_45
+  - first:
+      213: 295109212599751213
+    second: Six-frame cyan slash VFX sprite sheet_46
+  - first:
+      213: -6586811015289419298
+    second: Six-frame cyan slash VFX sprite sheet_47
+  - first:
+      213: -2186353176715779696
+    second: Six-frame cyan slash VFX sprite sheet_48
+  - first:
+      213: 3138736859300864534
+    second: Six-frame cyan slash VFX sprite sheet_49
+  - first:
+      213: 877135918418876788
+    second: Six-frame cyan slash VFX sprite sheet_50
+  - first:
+      213: 7034457791337832548
+    second: Six-frame cyan slash VFX sprite sheet_51
+  - first:
+      213: 409488537579566011
+    second: Six-frame cyan slash VFX sprite sheet_52
+  - first:
+      213: -145386800446296645
+    second: Six-frame cyan slash VFX sprite sheet_53
+  - first:
+      213: 5970581026212555814
+    second: Six-frame cyan slash VFX sprite sheet_54
+  - first:
+      213: -7311986247020408199
+    second: Six-frame cyan slash VFX sprite sheet_55
+  - first:
+      213: 5811380355636619340
+    second: Six-frame cyan slash VFX sprite sheet_56
+  - first:
+      213: -3359376316054904892
+    second: Six-frame cyan slash VFX sprite sheet_57
+  - first:
+      213: -2881745854450801240
+    second: Six-frame cyan slash VFX sprite sheet_58
+  - first:
+      213: 5063955265856967660
+    second: Six-frame cyan slash VFX sprite sheet_59
+  - first:
+      213: 65644478990075843
+    second: Six-frame cyan slash VFX sprite sheet_60
+  - first:
+      213: 8962643785037091256
+    second: Six-frame cyan slash VFX sprite sheet_61
+  - first:
+      213: 7867792740187513000
+    second: Six-frame cyan slash VFX sprite sheet_62
+  - first:
+      213: 7061765427888565116
+    second: Six-frame cyan slash VFX sprite sheet_63
+  - first:
+      213: -1550519811766805803
+    second: Six-frame cyan slash VFX sprite sheet_64
+  - first:
+      213: 3755678509661826003
+    second: Six-frame cyan slash VFX sprite sheet_65
+  - first:
+      213: 1218107350518058899
+    second: Six-frame cyan slash VFX sprite sheet_66
+  - first:
+      213: 3698550756805392228
+    second: Six-frame cyan slash VFX sprite sheet_67
+  - first:
+      213: 7910232137627090137
+    second: Six-frame cyan slash VFX sprite sheet_68
+  - first:
+      213: 4645962650968671793
+    second: Six-frame cyan slash VFX sprite sheet_69
+  - first:
+      213: 7045346021678196204
+    second: Six-frame cyan slash VFX sprite sheet_70
+  - first:
+      213: 3678072237697069595
+    second: Six-frame cyan slash VFX sprite sheet_71
+  - first:
+      213: 2705017537028431850
+    second: Six-frame cyan slash VFX sprite sheet_72
+  - first:
+      213: -8760953617833041209
+    second: Six-frame cyan slash VFX sprite sheet_73
+  - first:
+      213: -6639246773581075917
+    second: Six-frame cyan slash VFX sprite sheet_74
+  - first:
+      213: -4204382279629053858
+    second: Six-frame cyan slash VFX sprite sheet_75
+  - first:
+      213: -1708989173554267963
+    second: Six-frame cyan slash VFX sprite sheet_76
+  - first:
+      213: 6685538837768232983
+    second: Six-frame cyan slash VFX sprite sheet_77
+  - first:
+      213: -6591809870399468101
+    second: Six-frame cyan slash VFX sprite sheet_78
+  - first:
+      213: -7866977836770244992
+    second: Six-frame cyan slash VFX sprite sheet_79
+  - first:
+      213: -2127792888204542608
+    second: Six-frame cyan slash VFX sprite sheet_80
+  - first:
+      213: -229375601454243417
+    second: Six-frame cyan slash VFX sprite sheet_81
+  - first:
+      213: -2592584861319376592
+    second: Six-frame cyan slash VFX sprite sheet_82
+  - first:
+      213: 7141840387633044921
+    second: Six-frame cyan slash VFX sprite sheet_83
+  - first:
+      213: 7760094464932950533
+    second: Six-frame cyan slash VFX sprite sheet_84
+  - first:
+      213: -356880501408395692
+    second: Six-frame cyan slash VFX sprite sheet_85
+  - first:
+      213: 5195030924110569898
+    second: Six-frame cyan slash VFX sprite sheet_86
+  - first:
+      213: 3459101647181590375
+    second: Six-frame cyan slash VFX sprite sheet_87
+  - first:
+      213: -8263252768969797272
+    second: Six-frame cyan slash VFX sprite sheet_88
+  - first:
+      213: -6731873050032361244
+    second: Six-frame cyan slash VFX sprite sheet_89
+  - first:
+      213: -7266545337697515624
+    second: Six-frame cyan slash VFX sprite sheet_90
+  - first:
+      213: -3827274065089218638
+    second: Six-frame cyan slash VFX sprite sheet_91
+  - first:
+      213: -5314991108069239066
+    second: Six-frame cyan slash VFX sprite sheet_92
+  - first:
+      213: -6274134951254775208
+    second: Six-frame cyan slash VFX sprite sheet_93
+  - first:
+      213: -405603683633350690
+    second: Six-frame cyan slash VFX sprite sheet_94
+  - first:
+      213: -7188598563397848745
+    second: Six-frame cyan slash VFX sprite sheet_95
+  - first:
+      213: 7287474573856130170
+    second: Six-frame cyan slash VFX sprite sheet_96
+  - first:
+      213: 1395459236933190053
+    second: Six-frame cyan slash VFX sprite sheet_97
+  - first:
+      213: -1608212344011392813
+    second: Six-frame cyan slash VFX sprite sheet_98
+  - first:
+      213: -8026472299637702727
+    second: Six-frame cyan slash VFX sprite sheet_99
+  - first:
+      213: -3386816230227698661
+    second: Six-frame cyan slash VFX sprite sheet_100
+  - first:
+      213: 465110647499716074
+    second: Six-frame cyan slash VFX sprite sheet_101
+  - first:
+      213: -5473474419486163680
+    second: Six-frame cyan slash VFX sprite sheet_102
+  - first:
+      213: -8971343495665360268
+    second: Six-frame cyan slash VFX sprite sheet_103
+  - first:
+      213: 1712304518670063273
+    second: Six-frame cyan slash VFX sprite sheet_104
+  - first:
+      213: -8862549262654941644
+    second: Six-frame cyan slash VFX sprite sheet_105
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676f86e70b8382fc0800000000000000
+      internalID: -3519500778103835018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0727255dd67480560800000000000000
+      internalID: 7280147334700364400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caa676c9b83549490800000000000000
+      internalID: -7740470000453457236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b630a47634ddf00800000000000000
+      internalID: 1143143991324404573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa962675a7255e130800000000000000
+      internalID: 3595370562930764207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Six-frame cyan slash VFX sprite sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 071e944c628bed720800000000000000
+      internalID: 2872936088950399344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f93c809fc9f70c041b7bd58fdad855e6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":2.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Six-frame cyan slash VFX sprite sheet_0: -3519500778103835018
+      Six-frame cyan slash VFX sprite sheet_1: 7280147334700364400
+      Six-frame cyan slash VFX sprite sheet_2: -7740470000453457236
+      Six-frame cyan slash VFX sprite sheet_3: 1143143991324404573
+      Six-frame cyan slash VFX sprite sheet_4: 3595370562930764207
+      Six-frame cyan slash VFX sprite sheet_5: 2872936088950399344
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
