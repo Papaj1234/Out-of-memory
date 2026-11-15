@@ -47,6 +47,7 @@ MonoBehaviour:
   doorClearance: 2
   centerClearance: {x: 1, y: 1}
   doorPrefabOverride: {fileID: 0}
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 1436814480510096952, guid: d788dc4470a29a3489fd9cada602d98b, type: 3}
   enemyCount: {x: 1, y: 1}
   features: []

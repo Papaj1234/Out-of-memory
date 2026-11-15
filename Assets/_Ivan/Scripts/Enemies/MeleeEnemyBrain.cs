@@ -96,4 +96,9 @@ public class MeleeEnemyBrain : CombatEnemyBase
         }
 #endif
     }
+
+    public void TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
 }

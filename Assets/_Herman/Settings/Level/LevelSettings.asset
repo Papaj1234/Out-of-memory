@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1350cc734a0be840bd859045db4fe4c, type: 3}
   m_Name: LevelSettings
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Level.LevelSettings
-  roomCount: 5
+  roomCount: 7
   startType: {fileID: 11400000, guid: e538fe82c3d751e4cb6dee4cf7e91ed3, type: 2}
   normalType: {fileID: 11400000, guid: 2c0e9c3d10346fe46a00bf770c24e511, type: 2}
   treasureType: {fileID: 11400000, guid: cc0e71919a0fbe54091aa26249c31ae9, type: 2}
