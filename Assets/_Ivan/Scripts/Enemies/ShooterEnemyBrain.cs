@@ -66,15 +66,6 @@ public class ShooterEnemyBrain : CombatEnemyBase
 
         currentCooldown -= Time.deltaTime;
 
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(10);
-
-            Debug.Log(
-                $"Shooter HP: {HealthPercent:P0}");
-        }
-#endif
     }
 
     public void ResetShootCooldown()

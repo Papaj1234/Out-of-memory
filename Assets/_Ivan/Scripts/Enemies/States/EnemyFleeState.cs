@@ -9,7 +9,10 @@ public class EnemyFleeState : IEnemyState
         this.enemy = enemy;
     }
 
-    public void Enter() { }
+    public void Enter()
+    {
+        Debug.Log("ENTER FLEE");
+    }
 
     public void Update()
     {
@@ -19,8 +22,13 @@ public class EnemyFleeState : IEnemyState
             return;
         }
 
-        enemy.Move(enemy.DirectionAwayFromPlayer(), enemy.MoveSpeed);
+        enemy.Move(
+            enemy.GetPathDirectionAwayFromPlayer(),
+            enemy.MoveSpeed);
     }
 
-    public void Exit() { }
+    public void Exit()
+    {
+        Debug.Log("EXIT FLEE");
+    }
 }
