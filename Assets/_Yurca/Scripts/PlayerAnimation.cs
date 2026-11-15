@@ -8,6 +8,8 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
     [Tooltip("Через сколько секунд после остановки/удара повернуться лицом к камере")]
     [SerializeField] private float faceCameraDelay = 0f;
 
@@ -87,6 +89,14 @@ public class PlayerAnimation : MonoBehaviour
         if (isMoving)
         {
             lastDirection = velocity.normalized;
+            if (spriteRenderer != null)
+            {
+                bool isHorizontal =
+                    Mathf.Abs(lastDirection.x) > Mathf.Abs(lastDirection.y);
+
+                spriteRenderer.flipX =
+                    isHorizontal && lastDirection.x < 0f;
+            }
             idleTime = 0f;
         }
         else
