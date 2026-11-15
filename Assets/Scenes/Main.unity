@@ -1409,9 +1409,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: startingDash
+      value: 
+      objectReference: {fileID: 1363712161791146402, guid: 11015232207464c459bf7b6029aaf100, type: 3}
+    - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: startingAttack
       value: 
       objectReference: {fileID: 839069621556478906, guid: b8e645f723d60114989c69f9107879c5, type: 3}
+    - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: startingAbility1
+      value: 
+      objectReference: {fileID: 7488635132749834087, guid: e2401e2fc4eb13d479653c79c4871e79, type: 3}
+    - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: startingAbility2
+      value: 
+      objectReference: {fileID: 966405755861253986, guid: cf79306514315094ca03acf45a6b13bd, type: 3}
     - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1545,7 +1557,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: -0.15}
   m_Size: {x: 0.3, y: 0.3}
   m_Direction: 0
 --- !u!1660057539 &9223372036854775807
