@@ -89,21 +89,31 @@ public class PlayerAnimation : MonoBehaviour
         if (isMoving)
         {
             lastDirection = velocity.normalized;
-            if (spriteRenderer != null)
-            {
-                bool isHorizontal =
-                    Mathf.Abs(lastDirection.x) > Mathf.Abs(lastDirection.y);
-
-                spriteRenderer.flipX =
-                    isHorizontal && lastDirection.x < 0f;
-            }
             idleTime = 0f;
         }
         else
         {
             idleTime += Time.deltaTime;
-            if (idleTime >= faceCameraDelay)
-                lastDirection = Vector2.down; // стоит — смотрит на игрока
+
+            // Отрицательное значение отключает
+            // автоматический поворот к камере
+            if (faceCameraDelay >= 0f &&
+                idleTime >= faceCameraDelay)
+            {
+                lastDirection = Vector2.down;
+            }
+        }
+
+        // Определяем горизонтальное направление
+        bool isHorizontal =
+            Mathf.Abs(lastDirection.x) >
+            Mathf.Abs(lastDirection.y);
+
+        // Отражаем только боковые спрайты
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX =
+                isHorizontal && lastDirection.x < 0f;
         }
 
         animator.SetBool(IsMovingHash, isMoving);

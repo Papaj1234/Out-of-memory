@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   animator: {fileID: 8964271219425268170}
+  spriteRenderer: {fileID: 3223336707976795254}
   faceCameraDelay: 0
 --- !u!1 &1617528509055686745
 GameObject:
