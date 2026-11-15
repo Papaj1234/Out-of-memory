@@ -56,10 +56,11 @@ namespace Assets._Herman.Scripts.Level
                 .OrderByDescending(c => distance[c])
                 .ToList();
 
-            if (deadEnds.Count < 2) return null;
+            if (deadEnds.Count < 3) return null; // босс + 2 сокровищницы
 
             var bossPos = deadEnds[0];
             var treasurePos = deadEnds[1];
+            var treasurePos2 = deadEnds[2];
             if (distance[bossPos] < 2) return null;
 
             // 4. узлы
@@ -70,6 +71,7 @@ namespace Assets._Herman.Scripts.Level
                     pos == Vector2Int.zero ? RoomRole.Start :
                     pos == bossPos ? RoomRole.Boss :
                     pos == treasurePos ? RoomRole.Treasure :
+                    pos == treasurePos2 ? RoomRole.Treasure :
                                              RoomRole.Normal;
 
                 map[pos] = new RoomNode
