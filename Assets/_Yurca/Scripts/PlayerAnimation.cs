@@ -20,6 +20,12 @@ public class PlayerAnimation : MonoBehaviour
     private Vector2 lastDirection = Vector2.down;
     private float idleTime;
 
+    [SerializeField] private float attackAnimationDuration = 0.5f;
+
+    private bool isAttackFacingLocked;
+    private Vector2 attackDirection;
+    private float attackFacingEndTime;
+
     private static readonly int IsMovingHash =
         Animator.StringToHash("IsMoving");
 
@@ -78,6 +84,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+
     private void LateUpdate()
     {
         if (animator == null)
@@ -86,56 +93,102 @@ public class PlayerAnimation : MonoBehaviour
         Vector2 velocity = body.linearVelocity;
         bool isMoving = velocity.sqrMagnitude > 0.01f;
 
-        if (isMoving)
+        // Проверяем, закончилась ли анимация атаки
+        if (isAttackFacingLocked &&
+            Time.time >= attackFacingEndTime)
         {
-            lastDirection = velocity.normalized;
-            idleTime = 0f;
+            isAttackFacingLocked = false;
         }
-        else
-        {
-            idleTime += Time.deltaTime;
 
-            // Отрицательное значение отключает
-            // автоматический поворот к камере
-            if (faceCameraDelay >= 0f &&
-                idleTime >= faceCameraDelay)
+        // Движение обновляет направление только вне атаки
+        if (!isAttackFacingLocked)
+        {
+            if (isMoving)
             {
-                lastDirection = Vector2.down;
+                lastDirection = velocity.normalized;
+                idleTime = 0f;
+            }
+            else
+            {
+                idleTime += Time.deltaTime;
+
+                if (faceCameraDelay >= 0f &&
+                    idleTime >= faceCameraDelay)
+                {
+                    lastDirection = Vector2.down;
+                }
             }
         }
 
-        // Определяем горизонтальное направление
-        bool isHorizontal =
-            Mathf.Abs(lastDirection.x) >
-            Mathf.Abs(lastDirection.y);
+        // Во время атаки используем направление удара,
+        // в остальное время — направление движения
+        Vector2 facingDirection =
+            isAttackFacingLocked
+                ? attackDirection
+                : lastDirection;
 
-        // Отражаем только боковые спрайты
+        bool isHorizontal =
+            Mathf.Abs(facingDirection.x) >
+            Mathf.Abs(facingDirection.y);
+
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX =
-                isHorizontal && lastDirection.x < 0f;
+                isHorizontal && facingDirection.x < 0f;
         }
 
         animator.SetBool(IsMovingHash, isMoving);
-        animator.SetFloat(MoveXHash, lastDirection.x);
-        animator.SetFloat(MoveYHash, lastDirection.y);
+
+        animator.SetFloat(
+            MoveXHash,
+            facingDirection.x
+        );
+
+        animator.SetFloat(
+            MoveYHash,
+            facingDirection.y
+        );
     }
+
+
 
     private void PlayAttack(Vector2 direction)
     {
         if (animator == null)
             return;
 
-        lastDirection = direction;
+        if (direction.sqrMagnitude < 0.001f)
+            direction = lastDirection;
+
+        attackDirection = direction.normalized;
+
+        isAttackFacingLocked = true;
+        attackFacingEndTime =
+            Time.time + attackAnimationDuration;
+
         idleTime = 0f;
 
-        animator.SetFloat(AttackXHash, direction.x);
-        animator.SetFloat(AttackYHash, direction.y);
+        animator.SetFloat(AttackXHash, attackDirection.x);
+        animator.SetFloat(AttackYHash, attackDirection.y);
         animator.SetTrigger(AttackHash);
+
+        // Сразу поворачиваем персонажа к атаке
+        if (spriteRenderer != null)
+        {
+            bool isHorizontal =
+                Mathf.Abs(attackDirection.x) >
+                Mathf.Abs(attackDirection.y);
+
+            spriteRenderer.flipX =
+                isHorizontal && attackDirection.x < 0f;
+        }
     }
+
 
     private void ResetAttackTrigger()
     {
+        isAttackFacingLocked = false;
+
         if (animator != null)
             animator.ResetTrigger(AttackHash);
     }
