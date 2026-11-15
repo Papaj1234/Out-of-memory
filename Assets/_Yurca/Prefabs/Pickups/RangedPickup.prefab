@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 665801806576994518}
   - component: {fileID: 8937893499555164064}
   - component: {fileID: 839069621556478906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RangedPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
