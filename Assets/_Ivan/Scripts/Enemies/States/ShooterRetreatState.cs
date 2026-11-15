@@ -25,7 +25,7 @@ public class ShooterRetreatState : IEnemyState
             return;
         }
 
-        enemy.Move(enemy.DirectionAwayFromPlayer(), enemy.MoveSpeed);
+        enemy.Move(enemy.PathAwayFromPlayer(), enemy.MoveSpeed);
     }
 
     public void Exit() { }

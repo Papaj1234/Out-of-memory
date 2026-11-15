@@ -9,9 +9,7 @@ public class EnemyChaseState : IEnemyState
         this.enemy = enemy;
     }
 
-    public void Enter()
-    {
-    }
+    public void Enter() { }
 
     public void Update()
     {
@@ -33,12 +31,8 @@ public class EnemyChaseState : IEnemyState
             return;
         }
 
-        enemy.Move(
-            enemy.GetPathDirectionToPlayer(),
-            enemy.MoveSpeed);
+        enemy.Move(enemy.PathToPlayer(), enemy.MoveSpeed);
     }
 
-    public void Exit()
-    {
-    }
+    public void Exit() { }
 }
