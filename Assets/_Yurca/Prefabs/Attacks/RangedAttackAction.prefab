@@ -50,5 +50,5 @@ MonoBehaviour:
     m_Bits: 8
   obstacleLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   rangeMultiplier: 4
