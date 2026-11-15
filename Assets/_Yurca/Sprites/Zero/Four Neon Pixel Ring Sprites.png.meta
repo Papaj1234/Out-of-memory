@@ -1,0 +1,538 @@
+fileFormatVersion: 2
+guid: ed87f1a584e89e947b32a767d303142b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3932392654514315908
+    second: Four Neon Pixel Ring Sprites_0
+  - first:
+      213: 4040260764983901143
+    second: Four Neon Pixel Ring Sprites_1
+  - first:
+      213: -7883914887517214147
+    second: Four Neon Pixel Ring Sprites_2
+  - first:
+      213: -3973306351840512330
+    second: Four Neon Pixel Ring Sprites_3
+  - first:
+      213: -2593451430511612905
+    second: Four Neon Pixel Ring Sprites_4
+  - first:
+      213: 8049256482451548890
+    second: Four Neon Pixel Ring Sprites_5
+  - first:
+      213: 2598340199263554473
+    second: Four Neon Pixel Ring Sprites_6
+  - first:
+      213: 8765512583957989093
+    second: Four Neon Pixel Ring Sprites_7
+  - first:
+      213: 5077574748351388336
+    second: Four Neon Pixel Ring Sprites_8
+  - first:
+      213: 1143528063249502280
+    second: Four Neon Pixel Ring Sprites_9
+  - first:
+      213: -8245590918123801962
+    second: Four Neon Pixel Ring Sprites_10
+  - first:
+      213: -831854734566374830
+    second: Four Neon Pixel Ring Sprites_11
+  - first:
+      213: 3383368894874921269
+    second: Four Neon Pixel Ring Sprites_12
+  - first:
+      213: -4821786277971223584
+    second: Four Neon Pixel Ring Sprites_13
+  - first:
+      213: -5226203877522113921
+    second: Four Neon Pixel Ring Sprites_14
+  - first:
+      213: 6259281732676154871
+    second: Four Neon Pixel Ring Sprites_15
+  - first:
+      213: -7056558613888558211
+    second: Four Neon Pixel Ring Sprites_16
+  - first:
+      213: 5603378845553185522
+    second: Four Neon Pixel Ring Sprites_17
+  - first:
+      213: 2434840176249583360
+    second: Four Neon Pixel Ring Sprites_18
+  - first:
+      213: 4121094865225022241
+    second: Four Neon Pixel Ring Sprites_19
+  - first:
+      213: -9173515575674293106
+    second: Four Neon Pixel Ring Sprites_20
+  - first:
+      213: 7700838370483632063
+    second: Four Neon Pixel Ring Sprites_21
+  - first:
+      213: -7001455312142401870
+    second: Four Neon Pixel Ring Sprites_22
+  - first:
+      213: 7501487893804039740
+    second: Four Neon Pixel Ring Sprites_23
+  - first:
+      213: -3118972658584659833
+    second: Four Neon Pixel Ring Sprites_24
+  - first:
+      213: -5462520233784000272
+    second: Four Neon Pixel Ring Sprites_25
+  - first:
+      213: -8034608037396765327
+    second: Four Neon Pixel Ring Sprites_26
+  - first:
+      213: 2535445758394505202
+    second: Four Neon Pixel Ring Sprites_27
+  - first:
+      213: -8331163835287936882
+    second: Four Neon Pixel Ring Sprites_28
+  - first:
+      213: 1281735520502157109
+    second: Four Neon Pixel Ring Sprites_29
+  - first:
+      213: 1208034301370834581
+    second: Four Neon Pixel Ring Sprites_30
+  - first:
+      213: -3945570616748815196
+    second: Four Neon Pixel Ring Sprites_31
+  - first:
+      213: -7297698985388424113
+    second: Four Neon Pixel Ring Sprites_32
+  - first:
+      213: 1625222346016048313
+    second: Four Neon Pixel Ring Sprites_33
+  - first:
+      213: 8412157659492469754
+    second: Four Neon Pixel Ring Sprites_34
+  - first:
+      213: -9155753713987745217
+    second: Four Neon Pixel Ring Sprites_35
+  - first:
+      213: 5287847343462420693
+    second: Four Neon Pixel Ring Sprites_36
+  - first:
+      213: 7283836181513390350
+    second: Four Neon Pixel Ring Sprites_37
+  - first:
+      213: 7613709955887287345
+    second: Four Neon Pixel Ring Sprites_38
+  - first:
+      213: 1039277890332663796
+    second: Four Neon Pixel Ring Sprites_39
+  - first:
+      213: 7144781620201564959
+    second: Four Neon Pixel Ring Sprites_40
+  - first:
+      213: -4622562905171161501
+    second: Four Neon Pixel Ring Sprites_41
+  - first:
+      213: -534213445867581053
+    second: Four Neon Pixel Ring Sprites_42
+  - first:
+      213: 2577856161147313418
+    second: Four Neon Pixel Ring Sprites_43
+  - first:
+      213: -8231298200730932952
+    second: Four Neon Pixel Ring Sprites_44
+  - first:
+      213: -4920796274617623489
+    second: Four Neon Pixel Ring Sprites_45
+  - first:
+      213: -2781913338821450641
+    second: Four Neon Pixel Ring Sprites_46
+  - first:
+      213: -5910842406759793567
+    second: Four Neon Pixel Ring Sprites_47
+  - first:
+      213: -443745246769466234
+    second: Four Neon Pixel Ring Sprites_48
+  - first:
+      213: -2230239319708022050
+    second: Four Neon Pixel Ring Sprites_49
+  - first:
+      213: -3334727974817207536
+    second: Four Neon Pixel Ring Sprites_50
+  - first:
+      213: -5650498697971510722
+    second: Four Neon Pixel Ring Sprites_51
+  - first:
+      213: -629276577382639069
+    second: Four Neon Pixel Ring Sprites_52
+  - first:
+      213: -2145911795417273714
+    second: Four Neon Pixel Ring Sprites_53
+  - first:
+      213: -5946038943214354119
+    second: Four Neon Pixel Ring Sprites_54
+  - first:
+      213: -6428701373430366876
+    second: Four Neon Pixel Ring Sprites_55
+  - first:
+      213: -2855696395001136659
+    second: Four Neon Pixel Ring Sprites_56
+  - first:
+      213: -770651344716653635
+    second: Four Neon Pixel Ring Sprites_57
+  - first:
+      213: 7272633078402208506
+    second: Four Neon Pixel Ring Sprites_58
+  - first:
+      213: -4445791205575530883
+    second: Four Neon Pixel Ring Sprites_59
+  - first:
+      213: 8319868449648880813
+    second: Four Neon Pixel Ring Sprites_60
+  - first:
+      213: 9189642471631937062
+    second: Four Neon Pixel Ring Sprites_61
+  - first:
+      213: 5860785494281224226
+    second: Four Neon Pixel Ring Sprites_62
+  - first:
+      213: -4705145992106871988
+    second: Four Neon Pixel Ring Sprites_63
+  - first:
+      213: -446642071571414680
+    second: Four Neon Pixel Ring Sprites_64
+  - first:
+      213: 5492755357440604060
+    second: Four Neon Pixel Ring Sprites_65
+  - first:
+      213: 8689682690581872059
+    second: Four Neon Pixel Ring Sprites_66
+  - first:
+      213: -8155212143479543188
+    second: Four Neon Pixel Ring Sprites_67
+  - first:
+      213: -512222411161321554
+    second: Four Neon Pixel Ring Sprites_68
+  - first:
+      213: -5847084133325141883
+    second: Four Neon Pixel Ring Sprites_69
+  - first:
+      213: -8356128380466527861
+    second: Four Neon Pixel Ring Sprites_70
+  - first:
+      213: 5060273733737664396
+    second: Four Neon Pixel Ring Sprites_71
+  - first:
+      213: -8190623361302275335
+    second: Four Neon Pixel Ring Sprites_72
+  - first:
+      213: -5075684144800961040
+    second: Four Neon Pixel Ring Sprites_73
+  - first:
+      213: 663530322818356882
+    second: Four Neon Pixel Ring Sprites_74
+  - first:
+      213: -4156709295744517618
+    second: Four Neon Pixel Ring Sprites_75
+  - first:
+      213: -8094020666769614180
+    second: Four Neon Pixel Ring Sprites_76
+  - first:
+      213: -8184175951648585982
+    second: Four Neon Pixel Ring Sprites_77
+  - first:
+      213: 5610839310683285193
+    second: Four Neon Pixel Ring Sprites_78
+  - first:
+      213: 7769515024049636352
+    second: Four Neon Pixel Ring Sprites_79
+  - first:
+      213: 5670320616086352581
+    second: Four Neon Pixel Ring Sprites_80
+  - first:
+      213: 7087886770786312352
+    second: Four Neon Pixel Ring Sprites_81
+  - first:
+      213: -6634481153007219844
+    second: Four Neon Pixel Ring Sprites_82
+  - first:
+      213: 8848072156142325715
+    second: Four Neon Pixel Ring Sprites_83
+  - first:
+      213: -1185982236829779487
+    second: Four Neon Pixel Ring Sprites_84
+  - first:
+      213: -3761868946856702071
+    second: Four Neon Pixel Ring Sprites_85
+  - first:
+      213: 1019526698687900021
+    second: Four Neon Pixel Ring Sprites_86
+  - first:
+      213: -1780847047227484123
+    second: Four Neon Pixel Ring Sprites_87
+  - first:
+      213: 696601088340680313
+    second: Four Neon Pixel Ring Sprites_88
+  - first:
+      213: -5268091266564437833
+    second: Four Neon Pixel Ring Sprites_89
+  - first:
+      213: -3611858408561596407
+    second: Four Neon Pixel Ring Sprites_90
+  - first:
+      213: -7788623076700144796
+    second: Four Neon Pixel Ring Sprites_91
+  - first:
+      213: -4839642818504282138
+    second: Four Neon Pixel Ring Sprites_92
+  - first:
+      213: 2503690989578949375
+    second: Four Neon Pixel Ring Sprites_93
+  - first:
+      213: -5062064874208976321
+    second: Four Neon Pixel Ring Sprites_94
+  - first:
+      213: 303020789956641931
+    second: Four Neon Pixel Ring Sprites_95
+  - first:
+      213: -757123870595062394
+    second: Four Neon Pixel Ring Sprites_96
+  - first:
+      213: 4550287457480487566
+    second: Four Neon Pixel Ring Sprites_97
+  - first:
+      213: -3335922880873017819
+    second: Four Neon Pixel Ring Sprites_98
+  - first:
+      213: 2340778273373671570
+    second: Four Neon Pixel Ring Sprites_99
+  - first:
+      213: 7870051368418523853
+    second: Four Neon Pixel Ring Sprites_100
+  - first:
+      213: 8294286722739287081
+    second: Four Neon Pixel Ring Sprites_101
+  - first:
+      213: 1891729192299421426
+    second: Four Neon Pixel Ring Sprites_102
+  - first:
+      213: -3297547496690189195
+    second: Four Neon Pixel Ring Sprites_103
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Four Neon Pixel Ring Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d915627b55d69c0800000000000000
+      internalID: -3932392654514315908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Four Neon Pixel Ring Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db30d072c3e11830800000000000000
+      internalID: 4040260764983901143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Four Neon Pixel Ring Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a6f1a3e25b69290800000000000000
+      internalID: -7883914887517214147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Four Neon Pixel Ring Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 0
+        width: 543
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b63ebaaceafbd8c0800000000000000
+      internalID: -3973306351840512330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b7c0c86364d99744b96fae6e2fe52073
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":543.0,"y":724.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Four Neon Pixel Ring Sprites_0: -3932392654514315908
+      Four Neon Pixel Ring Sprites_1: 4040260764983901143
+      Four Neon Pixel Ring Sprites_2: -7883914887517214147
+      Four Neon Pixel Ring Sprites_3: -3973306351840512330
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
