@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6677763763052819740}
   - component: {fileID: 1726648858239187063}
   - component: {fileID: 3307723428040884033}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 1223070763132682758}
   - component: {fileID: 5218026157869663912}
   - component: {fileID: 3019543605384615265}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
