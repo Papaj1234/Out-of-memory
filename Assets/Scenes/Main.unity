@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.UI.StatsHUD
   text: {fileID: 1684815731}
   stats: {fileID: 0}
-  health: {fileID: 0}
   highlightTime: 2
   upColor: '#66FF88'
   downColor: '#FF6677'
@@ -800,8 +799,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 30473764a07a3204bbe296d7ac8a2385, type: 2}
+  m_sharedMaterial: {fileID: 5291018649056974596, guid: 30473764a07a3204bbe296d7ac8a2385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1188,6 +1187,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4199970105579869215, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: moveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600731924356156430, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: startingAttack
+      value: 
+      objectReference: {fileID: 839069621556478906, guid: b8e645f723d60114989c69f9107879c5, type: 3}
+    - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.68165
@@ -1238,6 +1257,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1286312181330968606, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2080002874}
+    - targetCorrespondingSourceObject: {fileID: 1286312181330968606, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080002875}
   m_SourcePrefab: {fileID: 100100000, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
 --- !u!4 &2080002865 stripped
 Transform:
@@ -1276,6 +1298,43 @@ MonoBehaviour:
   popTime: 0.12
   blinkTarget: {fileID: 1674331856}
   blinkInterval: 0.08
+--- !u!70 &2080002875
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289688986}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 0.6}
+  m_Direction: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

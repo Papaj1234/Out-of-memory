@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4421040296207214346}
   - component: {fileID: 5219167798341784341}
   - component: {fileID: 4280230258209880303}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterEnemyBrain
   moveSpeed: 3
-  maxHealth: 100
+  maxHealth: 30
   damage: 10
   damageToPlayer: 0.5
   minDistance: 3
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7892862723781211274}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

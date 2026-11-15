@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6729986133993518612}
   - component: {fileID: 2976937100862434308}
   - component: {fileID: 6871443195555460768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemyBrain
   moveSpeed: 3
-  maxHealth: 100
+  maxHealth: 30
   damage: 10
   damageToPlayer: 0.5
   attackRange: 1.5

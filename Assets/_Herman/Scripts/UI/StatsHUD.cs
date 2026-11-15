@@ -11,7 +11,6 @@ namespace Assets._Herman.Scripts.UI
         [SerializeField] private TMP_Text text;
         [Tooltip("Пусто = найдёт героя сам")]
         [SerializeField] private PlayerStats stats;
-        [SerializeField] private PlayerHealth health;
 
         [SerializeField] private float highlightTime = 2f;
         [SerializeField] private string upColor = "#66FF88";
@@ -33,7 +32,6 @@ namespace Assets._Herman.Scripts.UI
         private void Start()
         {
             if (stats == null) stats = FindAnyObjectByType<PlayerStats>();
-            if (health == null && stats != null) health = stats.GetComponent<PlayerHealth>();
             if (stats == null) return;
 
             Add("Speed", () => stats.MoveSpeed, "0.00");
@@ -60,10 +58,6 @@ namespace Assets._Herman.Scripts.UI
             if (text == null || stats == null) return;
 
             sb.Clear();
-
-            if (health != null)
-                sb.Append("HP  ").Append(health.CurrentHealth.ToString("0.#"))
-                  .Append(" / ").Append(health.MaxHealth.ToString("0.#")).Append('\n').Append('\n');
 
             foreach (var line in lines)
             {

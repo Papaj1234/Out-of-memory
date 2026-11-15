@@ -1,22 +1,23 @@
 using UnityEngine;
 
-public abstract class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour, IDamageable
 {
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 3f;
 
     [Header("Health")]
-    [SerializeField] protected int maxHealth = 100;
+    [SerializeField] protected float maxHealth = 100f;
 
-    protected int currentHealth;
+    protected float currentHealth;
     protected Transform player;
     protected Rigidbody2D rb;
 
     public float MoveSpeed => moveSpeed;
     public Transform Player => player;
+    public bool IsDead => currentHealth <= 0f;
 
     public float HealthPercent =>
-        maxHealth > 0 ? (float)currentHealth / maxHealth : 0f;
+        maxHealth > 0f ? currentHealth / maxHealth : 0f;
 
     protected virtual void Awake()
     {
@@ -26,12 +27,12 @@ public abstract class EnemyBase : MonoBehaviour
             rb.gravityScale = 0f;
             rb.freezeRotation = true;
         }
+
+        currentHealth = maxHealth;
     }
 
     protected virtual void Start()
     {
-        currentHealth = maxHealth;
-
         GameObject playerObject =
             GameObject.FindGameObjectWithTag("Player");
 
@@ -54,17 +55,22 @@ public abstract class EnemyBase : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
     }
 
-    public virtual void TakeDamage(int amount)
+    // Урон от атак героя (IDamageable)
+    public virtual void TakeDamage(float damage)
     {
-        currentHealth -= amount;
+        if (IsDead || damage <= 0f)
+            return;
 
-        if (currentHealth <= 0)
+        currentHealth = Mathf.Max(0f, currentHealth - damage);
+        Debug.Log($"[Enemy] {name} получил {damage}, HP {currentHealth}/{maxHealth}", this);
+
+        if (IsDead)
             Die();
     }
 
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); // комната узнает об этом сама (RoomEnemy)
     }
 
     public float DistanceToPlayer()
