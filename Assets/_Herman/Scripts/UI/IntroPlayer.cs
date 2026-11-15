@@ -5,12 +5,13 @@ using UnityEngine.Video;
 
 namespace Assets._Herman.Scripts.UI
 {
-    // Проигрывает заставку один раз и загружает игру. Любая клавиша — пропустить.
+    // Проигрывает заставку один раз и загружает игру. Пропуск — клавиша skipKey.
     public class IntroPlayer : MonoBehaviour
     {
         [SerializeField] private VideoPlayer video;
         [SerializeField] private string nextScene = "Main";
         [SerializeField] private bool allowSkip = true;
+        [SerializeField] private Key skipKey = Key.F;
 
         private bool loading;
 
@@ -26,13 +27,10 @@ namespace Assets._Herman.Scripts.UI
 
         private void Update()
         {
-            if (!allowSkip || loading) return;
+            if (!allowSkip || loading || Keyboard.current == null) return;
 
-            bool pressed =
-                (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame) ||
-                (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
-
-            if (pressed) LoadNext();
+            if (Keyboard.current[skipKey].wasPressedThisFrame)
+                LoadNext();
         }
 
         private void OnFinished(VideoPlayer vp) => LoadNext();
