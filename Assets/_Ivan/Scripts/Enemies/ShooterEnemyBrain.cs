@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ShooterEnemyBrain : CombatEnemyBase
 {
@@ -15,6 +14,9 @@ public class ShooterEnemyBrain : CombatEnemyBase
 
     [SerializeField] private EnemyProjectile projectilePrefab;
 
+    [Header("Behaviour")]
+    [SerializeField] private float stateChangeDelay = 0.3f;
+
     private ShooterApproachState approachState;
     private ShooterShootState shootState;
     private ShooterRetreatState retreatState;
@@ -24,6 +26,7 @@ public class ShooterEnemyBrain : CombatEnemyBase
     public float MinDistance => minDistance;
     public float MaxDistance => maxDistance;
     public float FireCooldown => fireCooldown;
+    public float StateChangeDelay => stateChangeDelay;
 
     public Transform FirePoint => firePoint;
 
@@ -64,7 +67,7 @@ public class ShooterEnemyBrain : CombatEnemyBase
         currentCooldown -= Time.deltaTime;
 
 #if UNITY_EDITOR
-        if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(10);
 
