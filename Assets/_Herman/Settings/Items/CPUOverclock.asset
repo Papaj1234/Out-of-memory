@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemData
   displayName: CPU Overclock
   description: Runs hot. +45% attack speed, -1 max health.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d0ae18aa0560338418b5502de79e33e7, type: 3}
   modifiers:
   - stat: 3
     flat: 0

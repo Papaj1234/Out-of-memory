@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemData
   displayName: Ultrawide Monitor
   description: See everything. +40% attack angle, +25% projectile radius, -10% damage.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3dff1ce9eea14264fb681990850883e3, type: 3}
   modifiers:
   - stat: 2
     flat: 0

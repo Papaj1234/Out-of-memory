@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemData
   displayName: Mechanical Keyboard
   description: Clicky. +20% attack speed, +10% damage.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6ec1d76658563bd429d88d85b3e4ee29, type: 3}
   modifiers:
   - stat: 3
     flat: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemData
   displayName: Fiber Optic
   description: Speed of light. +40% projectile speed, +25% attack range.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: eddd587b56200e94ba296f1b0bc599d7, type: 3}
   modifiers:
   - stat: 5
     flat: 0

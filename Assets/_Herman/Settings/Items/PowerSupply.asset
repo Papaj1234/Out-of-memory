@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.Items.ItemData
   displayName: Power Supply 1000W
   description: Enough power for everything. +10% to all stats.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4d6424309069ec64d9a166a0e0c7ab3d, type: 3}
   modifiers:
   - stat: 0
     flat: 0

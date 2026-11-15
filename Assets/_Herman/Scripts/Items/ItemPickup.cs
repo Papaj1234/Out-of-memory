@@ -18,14 +18,37 @@ namespace Assets._Herman.Scripts.Items
         [Tooltip("Радиус подбора в клетках")]
         [SerializeField] private float pickupRadius = 0.4f;
 
+        [Header("Bobbing")]
+        [Tooltip("Насколько высоко качается (в клетках)")]
+        [SerializeField] private float bobHeight = 0.08f;
+        [Tooltip("Скорость покачивания")]
+        [SerializeField] private float bobSpeed = 2.5f;
+
         public ItemData Item => item;
 
         private bool isPickedUp;
+        private Vector3 baseLocalPos;
+        private float bobPhase;
 
         private void Awake()
         {
             GetComponent<CircleCollider2D>().isTrigger = true;
             RefreshIcon();
+        }
+
+        private void Start()
+        {
+            if (iconRenderer == null) return;
+            baseLocalPos = iconRenderer.transform.localPosition;
+            bobPhase = Random.value * Mathf.PI * 2f; // у каждого предмета своя фаза
+        }
+
+        private void Update()
+        {
+            if (iconRenderer == null || isPickedUp) return;
+
+            float offset = Mathf.Sin(Time.time * bobSpeed + bobPhase) * bobHeight;
+            iconRenderer.transform.localPosition = baseLocalPos + Vector3.up * offset;
         }
 
         private void Reset()
