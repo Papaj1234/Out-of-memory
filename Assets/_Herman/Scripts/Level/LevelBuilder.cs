@@ -15,6 +15,8 @@ namespace Assets._Herman.Scripts.Level
         private readonly List<Room> rooms = new List<Room>();
         private readonly Dictionary<Vector2Int, Room> roomsByGrid = new Dictionary<Vector2Int, Room>();
 
+        public RoomRole GetRole(Room room) => room != null ? room.Role : RoomRole.Normal;
+
         public Room StartRoom { get; private set; }
         public IReadOnlyList<Room> Rooms => rooms;
 
@@ -69,6 +71,7 @@ namespace Assets._Herman.Scripts.Level
                 var room = Instantiate(roomPrefab, worldPos, Quaternion.identity, transform);
                 room.name = $"Room {node.gridPos} {node.role}";
                 room.GridPos = node.gridPos;
+                room.Role = node.role;
 
                 var layout = RoomGenerator.Generate(node.type, node.doors, node.seed);
                 room.Build(node.type, layout);

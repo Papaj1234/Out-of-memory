@@ -12,6 +12,12 @@ namespace Assets._Herman.Scripts.Items
         [Tooltip("Показывается, если у предмета нет иконки")]
         [SerializeField] private Sprite fallbackIcon;
 
+        [Header("Size")]
+        [Tooltip("Размер иконки в клетках (по большей стороне), любая картинка подгоняется под него")]
+        [SerializeField] private float iconSize = 0.7f;
+        [Tooltip("Радиус подбора в клетках")]
+        [SerializeField] private float pickupRadius = 0.4f;
+
         public ItemData Item => item;
 
         private bool isPickedUp;
@@ -41,6 +47,29 @@ namespace Assets._Herman.Scripts.Items
 
             Sprite icon = item != null ? item.Icon : null;
             iconRenderer.sprite = icon != null ? icon : fallbackIcon;
+
+            FitIconSize();
+        }
+
+        // Любая картинка (любой размер и PPU) -> iconSize клеток по большей стороне
+        private void FitIconSize()
+        {
+            var sprite = iconRenderer.sprite;
+            if (sprite == null) return;
+
+            Vector2 size = sprite.bounds.size;
+            float biggest = Mathf.Max(size.x, size.y);
+            if (biggest <= 0f) return;
+
+            float scale = iconSize / biggest;
+            iconRenderer.transform.localScale = new Vector3(scale, scale, 1f);
+
+            // если иконка на том же объекте, что и коллайдер — не даём радиусу подбора уехать
+            var col = GetComponent<CircleCollider2D>();
+            if (iconRenderer.transform == transform)
+                col.radius = pickupRadius / scale;
+            else
+                col.radius = pickupRadius;
         }
 
         private void OnTriggerEnter2D(Collider2D other) => TryPickUp(other);

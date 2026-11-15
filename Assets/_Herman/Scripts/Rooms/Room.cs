@@ -21,6 +21,7 @@ namespace Assets._Herman.Scripts.Rooms
         public bool IsCleared { get; private set; }
         public int AliveEnemies => aliveEnemies.Count;
         public Vector2Int GridPos { get; set; }
+        public Assets._Herman.Scripts.Level.RoomRole Role { get; set; }
         public Vector3 CenterWorld => CellToWorld(Layout.width / 2, Layout.height / 2);
 
         // Для камеры, UI и т.п.

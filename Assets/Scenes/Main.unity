@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &447868010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 447868011}
+  - component: {fileID: 447868012}
+  m_Layer: 5
+  m_Name: Minimap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &447868011
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447868010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 683407885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -120, y: -80}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &447868012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447868010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378d64e1571b54b4da4ce37cfd8dc49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Herman.Scripts.UI.MinimapHUD
+  navigator: {fileID: 0}
+  cellSprite: {fileID: 0}
+  cellSize: {x: 26, y: 16}
+  spacing: 4
+  currentColor: {r: 1, g: 1, b: 1, a: 1}
+  visitedColor: {r: 0.6, g: 0.6, b: 0.65, a: 0.9}
+  unknownColor: {r: 0.25, g: 0.25, b: 0.3, a: 0.8}
+  treasureColor: {r: 1, g: 0.85, b: 0.2, a: 1}
+  bossColor: {r: 0.9, g: 0.15, b: 0.2, a: 1}
 --- !u!1 &683407880
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +291,7 @@ RectTransform:
   m_Children:
   - {fileID: 1684815733}
   - {fileID: 885539860}
+  - {fileID: 447868011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1198,7 +1256,7 @@ PrefabInstance:
     - target: {fileID: 6723514979365232472, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: startingAttack
       value: 
-      objectReference: {fileID: 3369587731505037368, guid: e6ecf339b6afd6f40a8c2c34b6e8dac6, type: 3}
+      objectReference: {fileID: 839069621556478906, guid: b8e645f723d60114989c69f9107879c5, type: 3}
     - target: {fileID: 8887348564894535683, guid: 304fe22f9be3f62478a77cbf2814f6d4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
