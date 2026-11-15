@@ -64,10 +64,16 @@ public class ShooterShootState : IEnemyState
         }
     }
 
+
     private void Shoot()
     {
         Vector2 direction =
             enemy.DirectionToPlayer();
+
+        if (direction.sqrMagnitude < 0.001f ||
+            enemy.ProjectilePrefab == null ||
+            enemy.FirePoint == null)
+            return;
 
         EnemyProjectile projectile =
             Object.Instantiate(
@@ -76,7 +82,11 @@ public class ShooterShootState : IEnemyState
                 Quaternion.identity);
 
         projectile.Initialize(direction);
+
+        // Запускаем анимацию в направлении выстрела
+        enemy.PlayShootAnimation(direction);
     }
+
 
     public void Exit()
     {

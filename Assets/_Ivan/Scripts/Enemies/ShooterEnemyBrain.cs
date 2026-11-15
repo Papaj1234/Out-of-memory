@@ -22,6 +22,7 @@ public class ShooterEnemyBrain : CombatEnemyBase
     private ShooterRetreatState retreatState;
 
     private float currentCooldown;
+    private ShooterAnimation shooterAnimation;
 
     public float MinDistance => minDistance;
     public float MaxDistance => maxDistance;
@@ -72,4 +73,14 @@ public class ShooterEnemyBrain : CombatEnemyBase
     {
         currentCooldown = fireCooldown;
     }
+
+    public void PlayShootAnimation(Vector2 direction)
+    {
+        if (shooterAnimation == null)
+            shooterAnimation = GetComponent<ShooterAnimation>();
+
+        if (shooterAnimation != null)
+            shooterAnimation.PlayShoot(direction);
+    }
+
 }

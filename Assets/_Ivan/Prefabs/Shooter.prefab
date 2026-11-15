@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6806758794898677880}
@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 4421040296207214346}
   - component: {fileID: 5219167798341784341}
   - component: {fileID: 4280230258209880303}
+  - component: {fileID: 5068100257752519219}
   m_Layer: 3
   m_Name: Shooter
   m_TagString: Untagged
@@ -236,6 +237,23 @@ MonoBehaviour:
   firePoint: {fileID: 7892862723781211274}
   projectilePrefab: {fileID: 4809267474053965710, guid: 8d9b98bc33170d94f92c41543485b868, type: 3}
   stateChangeDelay: 0.3
+--- !u!114 &5068100257752519219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3105933871004422413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d9d14364fb25846a2ce1cf84742651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShooterAnimation
+  animator: {fileID: 3240176315713409577}
+  spriteRenderer: {fileID: 6958491127147245629}
+  body: {fileID: 4421040296207214346}
+  spriteFacesRight: 0
+  movementThreshold: 0.1
 --- !u!1 &4036949476006593862
 GameObject:
   m_ObjectHideFlags: 0
