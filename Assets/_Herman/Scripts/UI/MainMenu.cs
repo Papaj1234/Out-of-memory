@@ -13,8 +13,7 @@ namespace Assets._Herman.Scripts.UI
         // Кнопка "Начать игру"
         public void StartGame()
         {
-            bool introSeen = PlayerPrefs.GetInt(IntroSeenKey, 0) == 1;
-            SceneManager.LoadScene(introSeen ? gameScene : introScene);
+            SceneManager.LoadScene(introScene);
         }
 
         // Кнопка "Выход"
